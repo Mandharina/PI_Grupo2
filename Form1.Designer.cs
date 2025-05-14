@@ -39,20 +39,25 @@
             // lblMensajeBienvenida
             // 
             lblMensajeBienvenida.AutoSize = true;
-            lblMensajeBienvenida.Location = new Point(327, 61);
+            lblMensajeBienvenida.BackColor = Color.Transparent;
+            lblMensajeBienvenida.Font = new Font("Cooper Black", 18F, FontStyle.Italic, GraphicsUnit.Point);
+            lblMensajeBienvenida.ForeColor = Color.Black;
+            lblMensajeBienvenida.Location = new Point(274, 92);
             lblMensajeBienvenida.Name = "lblMensajeBienvenida";
-            lblMensajeBienvenida.Size = new Size(89, 20);
+            lblMensajeBienvenida.Size = new Size(202, 35);
             lblMensajeBienvenida.TabIndex = 0;
             lblMensajeBienvenida.Text = "Bienvenidos";
             // 
             // btnIngresar
             // 
+            btnIngresar.BackColor = Color.FromArgb(255, 192, 128);
+            btnIngresar.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnIngresar.Location = new Point(274, 339);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(191, 64);
             btnIngresar.TabIndex = 1;
             btnIngresar.Text = "INGRESAR";
-            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.UseVisualStyleBackColor = false;
             // 
             // lblUsuario
             // 
@@ -90,6 +95,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(0, 192, 192);
             ClientSize = new Size(800, 450);
             Controls.Add(txtPassword);
             Controls.Add(txtUsuario);
