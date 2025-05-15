@@ -83,6 +83,9 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(261, 27);
             txtUsuario.TabIndex = 4;
+            txtUsuario.Text = "Ingresá tu usuario";
+            txtUsuario.Enter += txtUsuario_Enter;
+            txtUsuario.Leave += txtUsuario_Leave;
             // 
             // txtPassword
             // 
@@ -90,6 +93,9 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(261, 27);
             txtPassword.TabIndex = 5;
+            txtPassword.Text = "Ingresá tu contraseña";
+            txtPassword.Enter += txtPassword_Enter;
+            txtPassword.Leave += txtPassword_Leave;
             // 
             // frmPaginaInicio
             // 

@@ -19,7 +19,7 @@ namespace PI_Grupo2
         private static Conexion? con = null;
         private Conexion() // asignamos valores a las variables de la conexion
             {
-                this.baseDatos = "Instiruto";
+                this.baseDatos = "proyecto";
                 this.servidor = "localhost";
                 this.puerto = "3306";
                 this.usuario = "root";
