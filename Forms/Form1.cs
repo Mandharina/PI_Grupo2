@@ -1,6 +1,6 @@
 using System;
 using System.Data;
-using PI_Grupo2;
+using PI_Grupo2.Datos;
 
 namespace PI_Grupo2
 {
@@ -67,6 +67,10 @@ namespace PI_Grupo2
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

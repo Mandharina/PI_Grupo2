@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
 
-namespace PI_Grupo2
+namespace PI_Grupo2.Datos
 {
    public class Conexion
     {
@@ -19,11 +19,11 @@ namespace PI_Grupo2
         private static Conexion? con = null;
         private Conexion() // Asignamos valores a las variables de la conexion
             {
-                this.baseDatos = "Proyecto";
-                this.servidor = "localhost";
-                this.puerto = "3306";
-                this.usuario = "root";
-                this.clave = "milanesa"; // Agregar contraseña si es que el servidor lo requiere
+                baseDatos = "Proyecto";
+                servidor = "localhost";
+                puerto = "3306";
+                usuario = "root";
+                clave = "melusina29"; // Agregar contraseña si es que el servidor lo requiere
             }
         // Proceso de interacción
         public MySqlConnection CrearConexion()
@@ -33,11 +33,11 @@ namespace PI_Grupo2
             // El bloque try permite controlar errores
             try
             {
-                cadena.ConnectionString = "datasource=" + this.servidor +
-                ";port=" + this.puerto +
-                ";username=" + this.usuario +
-                ";password=" + this.clave +
-                ";Database=" + this.baseDatos;
+                cadena.ConnectionString = "datasource=" + servidor +
+                ";port=" + puerto +
+                ";username=" + usuario +
+                ";password=" + clave +
+                ";Database=" + baseDatos;
 
             }
             catch (Exception ex)

@@ -2,7 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace PI_Grupo2
+namespace PI_Grupo2.Datos
 {
     internal class Usuarios
     {

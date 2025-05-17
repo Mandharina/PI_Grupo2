@@ -19,5 +19,17 @@ namespace PI_Grupo2
             // Al cerrar la ventana se finaliza el sistema
             this.FormClosed += (s, e) => Application.Exit();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnRegistrarCliente_Click(object sender, EventArgs e)
+        {
+            frmRegistrarCliente registar_cliente = new frmRegistrarCliente();
+            registar_cliente.Show();
+            this.Hide();
+        }
     }
 }
