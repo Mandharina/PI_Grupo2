@@ -10,27 +10,27 @@ namespace PI_Grupo2
 {
    public class Conexion
     {
-        // declaramos las variables
+        // Declaramos las variables
         private string baseDatos;
         private string servidor;
         private string puerto;
         private string usuario;
         private string clave;
         private static Conexion? con = null;
-        private Conexion() // asignamos valores a las variables de la conexion
+        private Conexion() // Asignamos valores a las variables de la conexion
             {
-                this.baseDatos = "proyecto";
+                this.baseDatos = "Proyecto";
                 this.servidor = "localhost";
                 this.puerto = "3306";
                 this.usuario = "root";
-                this.clave = "";
+                this.clave = "milanesa"; // Agregar contraseña si es que el servidor lo requiere
             }
-        // proceso de interacción
-        public MySqlConnection CrearConcexion()
+        // Proceso de interacción
+        public MySqlConnection CrearConexion()
             {
-            // instanciamos una conexion
+            // Instanciamos una conexion
             MySqlConnection? cadena = new MySqlConnection();
-            // el bloque try permite controlar errores
+            // El bloque try permite controlar errores
             try
             {
                 cadena.ConnectionString = "datasource=" + this.servidor +
@@ -43,16 +43,16 @@ namespace PI_Grupo2
             catch (Exception ex)
             {
                 cadena = null;
-                throw;
+                throw ex;
             }
             return cadena;
         }
-        // para evaluar la instancia de la conectividad
+        // Para evaluar la instancia de la conectividad
         public static Conexion getInstancia()
         {
-            if (con == null) // quiere decir que la conexion esta cerrada
+            if (con == null) // Quiere decir que la conexion esta cerrada
             {
-                con = new Conexion(); // se crea una nueva
+                con = new Conexion(); // Se crea una nueva
             }
             return con;
         }

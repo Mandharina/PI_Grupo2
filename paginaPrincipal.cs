@@ -14,7 +14,10 @@ namespace PI_Grupo2
     {
         public frmPaginaPrincipal()
         {
+            //Se inicializa el componente/pantalla
             InitializeComponent();
+            // Al cerrar la ventana se finaliza el sistema
+            this.FormClosed += (s, e) => Application.Exit();
         }
     }
 }

@@ -1,10 +1,17 @@
+using System;
+using System.Data;
+using PI_Grupo2;
+
 namespace PI_Grupo2
 {
     public partial class frmPaginaInicio : Form
     {
         public frmPaginaInicio()
         {
+            //Inicializa la pantalla formulario
             InitializeComponent();
+            // Al cerrar la ventana se finaliza el sistema
+            this.FormClosed += (s, e) => Application.Exit();
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
@@ -40,7 +47,26 @@ namespace PI_Grupo2
             }
         }
 
-        
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            DataTable tablaLogin = new DataTable(); // Es la que recibe los  datos desde el formulario
+            Usuarios dato = new Usuarios(); // Instanciamos un objeto de tipo usuarios
+            tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPassword.Text);
+            if (tablaLogin.Rows.Count > 0)
+            {
+                // Quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
+                MessageBox.Show("Ingreso exitoso");
+                frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                principal.Show(); // Mostramos la nueva pantalla
+
+                this.Hide(); // Se oculta la pantalla de login
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o password incorrecto");
+            }
+        }
+
     }
 }
 

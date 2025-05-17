@@ -58,6 +58,7 @@
             btnIngresar.TabIndex = 1;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // lblUsuario
             // 
