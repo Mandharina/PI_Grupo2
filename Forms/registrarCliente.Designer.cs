@@ -42,64 +42,72 @@ namespace PI_Grupo2
             dtpFechaNac = new DateTimePicker();
             txtTelefono = new TextBox();
             cboGenero = new ComboBox();
-            btnRegistrar = new Button();
+            btnRegistrarSocio = new Button();
             btnVolver = new Button();
             lblDomicilio = new Label();
             txtDomicilio = new TextBox();
             btnLimpiarFormulario = new Button();
+            label1 = new Label();
+            btnRegistrarNoSocio = new Button();
             SuspendLayout();
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(49, 54);
+            lblNombre.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombre.Location = new Point(45, 103);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(67, 20);
+            lblNombre.Size = new Size(60, 17);
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre:";
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(416, 54);
+            lblApellido.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblApellido.Location = new Point(368, 103);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(69, 20);
+            lblApellido.Size = new Size(59, 17);
             lblApellido.TabIndex = 1;
             lblApellido.Text = "Apellido:";
             // 
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(49, 113);
+            lblDni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDni.Location = new Point(45, 148);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(38, 20);
+            lblDni.Size = new Size(33, 17);
             lblDni.TabIndex = 2;
             lblDni.Text = "DNI:";
             // 
             // lblFechaNac
             // 
             lblFechaNac.AutoSize = true;
-            lblFechaNac.Location = new Point(416, 113);
+            lblFechaNac.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNac.Location = new Point(368, 149);
             lblFechaNac.Name = "lblFechaNac";
-            lblFechaNac.Size = new Size(152, 20);
+            lblFechaNac.Size = new Size(133, 17);
             lblFechaNac.TabIndex = 3;
             lblFechaNac.Text = "Fecha de Nacimiento:";
             // 
             // lblGenero
             // 
             lblGenero.AutoSize = true;
-            lblGenero.Location = new Point(49, 244);
+            lblGenero.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblGenero.Location = new Point(45, 245);
             lblGenero.Name = "lblGenero";
-            lblGenero.Size = new Size(57, 20);
+            lblGenero.Size = new Size(51, 17);
             lblGenero.TabIndex = 4;
             lblGenero.Text = "Género";
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Location = new Point(428, 244);
+            lblTelefono.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTelefono.Location = new Point(368, 246);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(70, 20);
+            lblTelefono.Size = new Size(61, 17);
             lblTelefono.TabIndex = 5;
             lblTelefono.Text = "Teléfono:";
             // 
@@ -107,118 +115,158 @@ namespace PI_Grupo2
             // 
             chkApto.AutoSize = true;
             chkApto.CheckAlign = ContentAlignment.MiddleRight;
-            chkApto.Location = new Point(49, 303);
+            chkApto.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            chkApto.Location = new Point(45, 292);
+            chkApto.Margin = new Padding(3, 2, 3, 2);
             chkApto.Name = "chkApto";
-            chkApto.Size = new Size(161, 24);
+            chkApto.Size = new Size(142, 21);
             chkApto.TabIndex = 9;
             chkApto.Text = "Presenta apto físico";
             chkApto.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(122, 47);
+            txtNombre.Location = new Point(111, 100);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(273, 27);
+            txtNombre.Size = new Size(239, 23);
             txtNombre.TabIndex = 10;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(488, 47);
+            txtApellido.Location = new Point(431, 100);
+            txtApellido.Margin = new Padding(3, 2, 3, 2);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(289, 27);
+            txtApellido.Size = new Size(253, 23);
             txtApellido.TabIndex = 11;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(122, 106);
+            txtDni.Location = new Point(111, 145);
+            txtDni.Margin = new Padding(3, 2, 3, 2);
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(273, 27);
+            txtDni.Size = new Size(239, 23);
             txtDni.TabIndex = 12;
             // 
             // dtpFechaNac
             // 
             dtpFechaNac.Format = DateTimePickerFormat.Short;
-            dtpFechaNac.Location = new Point(574, 108);
+            dtpFechaNac.Location = new Point(506, 146);
+            dtpFechaNac.Margin = new Padding(3, 2, 3, 2);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(136, 27);
+            dtpFechaNac.Size = new Size(174, 23);
             dtpFechaNac.TabIndex = 14;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(504, 237);
+            txtTelefono.Location = new Point(431, 243);
+            txtTelefono.Margin = new Padding(3, 2, 3, 2);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(273, 27);
+            txtTelefono.Size = new Size(253, 23);
             txtTelefono.TabIndex = 15;
             // 
             // cboGenero
             // 
             cboGenero.FormattingEnabled = true;
             cboGenero.Items.AddRange(new object[] { "Femenino", "Masculino", "Otro" });
-            cboGenero.Location = new Point(122, 236);
+            cboGenero.Location = new Point(111, 242);
+            cboGenero.Margin = new Padding(3, 2, 3, 2);
             cboGenero.Name = "cboGenero";
-            cboGenero.Size = new Size(273, 28);
+            cboGenero.Size = new Size(239, 23);
             cboGenero.TabIndex = 16;
             // 
-            // btnRegistrar
+            // btnRegistrarSocio
             // 
-            btnRegistrar.BackColor = Color.FromArgb(255, 192, 128);
-            btnRegistrar.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRegistrar.ForeColor = Color.Black;
-            btnRegistrar.Location = new Point(276, 334);
-            btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(189, 68);
-            btnRegistrar.TabIndex = 17;
-            btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = false;
-            btnRegistrar.Click += btnIngresar_Click;
+            btnRegistrarSocio.BackColor = Color.FromArgb(255, 192, 128);
+            btnRegistrarSocio.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRegistrarSocio.ForeColor = Color.Black;
+            btnRegistrarSocio.Location = new Point(553, 392);
+            btnRegistrarSocio.Margin = new Padding(3, 2, 3, 2);
+            btnRegistrarSocio.Name = "btnRegistrarSocio";
+            btnRegistrarSocio.Size = new Size(131, 51);
+            btnRegistrarSocio.TabIndex = 17;
+            btnRegistrarSocio.Text = "REGISTRAR SOCIO";
+            btnRegistrarSocio.UseVisualStyleBackColor = false;
+            btnRegistrarSocio.Click += btnIngresar_Click;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(39, 383);
+            btnVolver.BackColor = Color.Salmon;
+            btnVolver.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnVolver.Location = new Point(45, 398);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(115, 39);
+            btnVolver.Size = new Size(100, 45);
             btnVolver.TabIndex = 18;
-            btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Text = "VOLVER";
+            btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
             // lblDomicilio
             // 
             lblDomicilio.AutoSize = true;
-            lblDomicilio.Location = new Point(39, 169);
+            lblDomicilio.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDomicilio.Location = new Point(45, 195);
             lblDomicilio.Name = "lblDomicilio";
-            lblDomicilio.Size = new Size(77, 20);
+            lblDomicilio.Size = new Size(65, 17);
             lblDomicilio.TabIndex = 19;
             lblDomicilio.Text = "Domicilio:";
             // 
             // txtDomicilio
             // 
-            txtDomicilio.Location = new Point(124, 169);
+            txtDomicilio.Location = new Point(112, 192);
+            txtDomicilio.Margin = new Padding(3, 2, 3, 2);
             txtDomicilio.Name = "txtDomicilio";
-            txtDomicilio.Size = new Size(653, 27);
+            txtDomicilio.Size = new Size(572, 23);
             txtDomicilio.TabIndex = 20;
             // 
             // btnLimpiarFormulario
             // 
-            btnLimpiarFormulario.Location = new Point(657, 358);
+            btnLimpiarFormulario.BackColor = Color.LightGray;
+            btnLimpiarFormulario.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLimpiarFormulario.Location = new Point(488, 285);
+            btnLimpiarFormulario.Margin = new Padding(3, 2, 3, 2);
             btnLimpiarFormulario.Name = "btnLimpiarFormulario";
-            btnLimpiarFormulario.Size = new Size(120, 68);
+            btnLimpiarFormulario.Size = new Size(196, 30);
             btnLimpiarFormulario.TabIndex = 21;
             btnLimpiarFormulario.Text = "Limpiar Formulario";
-            btnLimpiarFormulario.UseVisualStyleBackColor = true;
+            btnLimpiarFormulario.UseVisualStyleBackColor = false;
             btnLimpiarFormulario.Click += btnLimpiarFormulario_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(111, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(479, 40);
+            label1.TabIndex = 22;
+            label1.Text = "Registro de Nuevo Cliente";
+            // 
+            // btnRegistrarNoSocio
+            // 
+            btnRegistrarNoSocio.BackColor = Color.FromArgb(255, 192, 128);
+            btnRegistrarNoSocio.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRegistrarNoSocio.Location = new Point(380, 392);
+            btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
+            btnRegistrarNoSocio.Size = new Size(132, 51);
+            btnRegistrarNoSocio.TabIndex = 23;
+            btnRegistrarNoSocio.Text = "REGISTRAR NO SOCIO";
+            btnRegistrarNoSocio.UseVisualStyleBackColor = false;
             // 
             // frmRegistrarCliente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(741, 489);
+            Controls.Add(btnRegistrarNoSocio);
+            Controls.Add(label1);
             Controls.Add(btnLimpiarFormulario);
             Controls.Add(txtDomicilio);
             Controls.Add(lblDomicilio);
             Controls.Add(btnVolver);
-            Controls.Add(btnRegistrar);
+            Controls.Add(btnRegistrarSocio);
             Controls.Add(cboGenero);
             Controls.Add(txtTelefono);
             Controls.Add(dtpFechaNac);
@@ -232,6 +280,7 @@ namespace PI_Grupo2
             Controls.Add(lblDni);
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmRegistrarCliente";
             RightToLeft = RightToLeft.No;
             Text = "Registrar Cliente";
@@ -256,10 +305,12 @@ namespace PI_Grupo2
         private DateTimePicker dtpFechaNac;
         private TextBox txtTelefono;
         private ComboBox cboGenero;
-        private Button btnRegistrar;
+        private Button btnRegistrarSocio;
         private Button btnVolver;
         private Label lblDomicilio;
         private TextBox txtDomicilio;
         private Button btnLimpiarFormulario;
+        private Label label1;
+        private Button btnRegistrarNoSocio;
     }
 }

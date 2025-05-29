@@ -42,21 +42,22 @@
             // 
             lblMensajeBienvenida.AutoSize = true;
             lblMensajeBienvenida.BackColor = Color.Transparent;
-            lblMensajeBienvenida.Font = new Font("Cooper Black", 25.8000011F, FontStyle.Italic, GraphicsUnit.Point);
+            lblMensajeBienvenida.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblMensajeBienvenida.ForeColor = Color.Black;
-            lblMensajeBienvenida.Location = new Point(106, 50);
+            lblMensajeBienvenida.Location = new Point(93, 38);
             lblMensajeBienvenida.Name = "lblMensajeBienvenida";
-            lblMensajeBienvenida.Size = new Size(296, 50);
+            lblMensajeBienvenida.Size = new Size(233, 40);
             lblMensajeBienvenida.TabIndex = 0;
             lblMensajeBienvenida.Text = "Bienvenidos";
             // 
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.FromArgb(255, 192, 128);
-            btnIngresar.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(159, 323);
+            btnIngresar.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnIngresar.Location = new Point(139, 222);
+            btnIngresar.Margin = new Padding(3, 2, 3, 2);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(191, 64);
+            btnIngresar.Size = new Size(167, 48);
             btnIngresar.TabIndex = 1;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
@@ -65,26 +66,30 @@
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(44, 143);
+            lblUsuario.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUsuario.Location = new Point(38, 112);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(66, 20);
+            lblUsuario.Size = new Size(60, 17);
             lblUsuario.TabIndex = 2;
             lblUsuario.Text = "Usuario: ";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(24, 231);
+            lblPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPassword.Location = new Point(21, 160);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(86, 20);
+            lblPassword.Size = new Size(77, 17);
             lblPassword.TabIndex = 3;
             lblPassword.Text = "Contraseña:";
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(128, 136);
+            txtUsuario.Location = new Point(112, 109);
+            txtUsuario.Margin = new Padding(3, 2, 3, 2);
+            txtUsuario.MaxLength = 50;
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(261, 27);
+            txtUsuario.Size = new Size(229, 23);
             txtUsuario.TabIndex = 4;
             txtUsuario.Text = "Ingresá tu usuario";
             txtUsuario.Enter += txtUsuario_Enter;
@@ -92,9 +97,11 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(128, 228);
+            txtPassword.Location = new Point(112, 157);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
+            txtPassword.MaxLength = 20;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(261, 27);
+            txtPassword.Size = new Size(229, 23);
             txtPassword.TabIndex = 5;
             txtPassword.Text = "Ingresá tu contraseña";
             txtPassword.Enter += txtPassword_Enter;
@@ -103,19 +110,20 @@
             // picLogo
             // 
             picLogo.Image = Properties.Resources.logo_club;
-            picLogo.Location = new Point(462, 50);
+            picLogo.Location = new Point(404, 38);
+            picLogo.Margin = new Padding(3, 2, 3, 2);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(326, 318);
+            picLogo.Size = new Size(285, 238);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 6;
             picLogo.TabStop = false;
             // 
-            // frmPaginaInicio
+            // frmLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(picLogo);
             Controls.Add(txtPassword);
             Controls.Add(txtUsuario);
@@ -123,7 +131,8 @@
             Controls.Add(lblUsuario);
             Controls.Add(btnIngresar);
             Controls.Add(lblMensajeBienvenida);
-            Name = "frmPaginaInicio";
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "frmLogin";
             Text = "PÁGINA DE INICIO";
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             ResumeLayout(false);

@@ -32,60 +32,73 @@
             btnPagar = new Button();
             btnListarCuotas = new Button();
             btnSalir = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // btnRegistrarCliente
             // 
             btnRegistrarCliente.BackColor = Color.FromArgb(192, 255, 192);
-            btnRegistrarCliente.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRegistrarCliente.Location = new Point(125, 61);
+            btnRegistrarCliente.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRegistrarCliente.Location = new Point(146, 118);
             btnRegistrarCliente.Name = "btnRegistrarCliente";
-            btnRegistrarCliente.Size = new Size(212, 98);
+            btnRegistrarCliente.Size = new Size(270, 100);
             btnRegistrarCliente.TabIndex = 0;
-            btnRegistrarCliente.Text = "Registrar Cliente";
+            btnRegistrarCliente.Text = "REGISTRAR CLIENTE";
             btnRegistrarCliente.UseVisualStyleBackColor = false;
             btnRegistrarCliente.Click += btnRegistrarCliente_Click;
             // 
             // btnPagar
             // 
             btnPagar.BackColor = Color.FromArgb(255, 224, 192);
-            btnPagar.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPagar.Location = new Point(512, 61);
+            btnPagar.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPagar.Location = new Point(476, 118);
             btnPagar.Name = "btnPagar";
-            btnPagar.Size = new Size(212, 98);
+            btnPagar.Size = new Size(270, 100);
             btnPagar.TabIndex = 1;
-            btnPagar.Text = "Pagar";
+            btnPagar.Text = "PAGAR";
             btnPagar.UseVisualStyleBackColor = false;
             // 
             // btnListarCuotas
             // 
             btnListarCuotas.BackColor = Color.FromArgb(255, 255, 192);
-            btnListarCuotas.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnListarCuotas.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnListarCuotas.ForeColor = SystemColors.ControlText;
-            btnListarCuotas.Location = new Point(125, 245);
+            btnListarCuotas.Location = new Point(146, 245);
             btnListarCuotas.Name = "btnListarCuotas";
-            btnListarCuotas.Size = new Size(212, 98);
+            btnListarCuotas.Size = new Size(270, 100);
             btnListarCuotas.TabIndex = 2;
-            btnListarCuotas.Text = "Listar Cuotas";
+            btnListarCuotas.Text = "LISTAR CUOTAS";
             btnListarCuotas.UseVisualStyleBackColor = false;
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.Red;
-            btnSalir.Location = new Point(810, 400);
+            btnSalir.BackColor = Color.Tomato;
+            btnSalir.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSalir.Location = new Point(788, 393);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(76, 38);
+            btnSalir.Size = new Size(100, 45);
             btnSalir.TabIndex = 3;
-            btnSalir.Text = "Salir";
+            btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(295, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(287, 40);
+            label1.TabIndex = 4;
+            label1.Text = "Menu Principal";
+            // 
             // frmPaginaPrincipal
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
             ClientSize = new Size(900, 450);
+            Controls.Add(label1);
             Controls.Add(btnSalir);
             Controls.Add(btnListarCuotas);
             Controls.Add(btnPagar);
@@ -94,6 +107,7 @@
             Name = "frmPaginaPrincipal";
             Text = "Página Principal";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -102,5 +116,6 @@
         private Button btnPagar;
         private Button btnListarCuotas;
         private Button btnSalir;
+        private Label label1;
     }
 }

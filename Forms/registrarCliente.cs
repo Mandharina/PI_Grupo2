@@ -18,6 +18,7 @@ namespace PI_Grupo2
         public frmRegistrarCliente()
         {
             InitializeComponent();
+            this.FormClosed += (s, e) => Application.Exit();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

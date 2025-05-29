@@ -49,21 +49,41 @@ namespace PI_Grupo2
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            DataTable tablaLogin = new DataTable(); // Es la que recibe los  datos desde el formulario
-            Usuarios dato = new Usuarios(); // Instanciamos un objeto de tipo usuarios
-            tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPassword.Text);
-            if (tablaLogin.Rows.Count > 0)
+            // Validación de campos vacíos o con texto por defecto
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text) || txtUsuario.Text == "Ingresá tu usuario")
             {
-                // Quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-                MessageBox.Show("Ingreso exitoso");
-                frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                principal.Show(); // Mostramos la nueva pantalla
-
-                this.Hide(); // Se oculta la pantalla de login
+                MessageBox.Show("Por favor, ingresá tu usuario.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text == "Ingresá tu contraseña")
             {
-                MessageBox.Show("Usuario y/o password incorrecto");
+                MessageBox.Show("Por favor, ingresá tu contraseña.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
+                return;
+            }
+
+            try
+            {
+                Usuarios dato = new Usuarios();
+                DataTable tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPassword.Text);
+
+                if (tablaLogin.Rows.Count > 0)
+                {
+                    MessageBox.Show("Ingreso exitoso","Club Deportivo C#", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                    principal.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contraseña incorrectos", "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al intentar iniciar sesión:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

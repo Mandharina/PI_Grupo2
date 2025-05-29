@@ -32,7 +32,7 @@ namespace PI_Grupo2.Datos
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ApplicationException("Error de base de datos: " + ex.Message, ex);
             }
             // Como proceso final cerramos la conexión
             finally

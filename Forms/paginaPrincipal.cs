@@ -31,8 +31,9 @@ namespace PI_Grupo2
             //registar_cliente.Show();
             frmVerificarDni verificar_cliente = new frmVerificarDni();
             verificar_cliente.Show();
-            
+
             this.Hide();
         }
+
     }
 }
