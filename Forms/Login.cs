@@ -4,9 +4,9 @@ using PI_Grupo2.Datos;
 
 namespace PI_Grupo2
 {
-    public partial class frmPaginaInicio : Form
+    public partial class frmLogin : Form
     {
-        public frmPaginaInicio()
+        public frmLogin()
         {
             //Inicializa la pantalla formulario
             InitializeComponent();
@@ -67,10 +67,6 @@ namespace PI_Grupo2
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

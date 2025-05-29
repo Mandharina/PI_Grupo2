@@ -27,8 +27,11 @@ namespace PI_Grupo2
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
-            frmRegistrarCliente registar_cliente = new frmRegistrarCliente();
-            registar_cliente.Show();
+            //frmRegistrarCliente registar_cliente = new frmRegistrarCliente();
+            //registar_cliente.Show();
+            frmVerificarDni verificar_cliente = new frmVerificarDni();
+            verificar_cliente.Show();
+            
             this.Hide();
         }
     }

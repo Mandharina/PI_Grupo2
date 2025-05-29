@@ -1,6 +1,6 @@
 ﻿namespace PI_Grupo2
 {
-    partial class frmPaginaInicio
+    partial class frmLogin
     {
         /// <summary>
         ///  Required designer variable.
