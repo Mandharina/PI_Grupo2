@@ -13,7 +13,7 @@ namespace PI_Grupo2.Datos
 
             try
             {
-                MySqlCommand cmd = new MySqlCommand("verificar_dni", con);
+                MySqlCommand cmd = new MySqlCommand("VerificarDni", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@p_dni", dni);

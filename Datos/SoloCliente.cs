@@ -4,7 +4,7 @@ using PI_Grupo2.Entidades;
 
 namespace PI_Grupo2.Datos
 {
-    internal class Clientes
+    internal class SoloCliente
     {
         public string Registrar_Cliente(E_Cliente cliente)
         {
@@ -20,7 +20,7 @@ namespace PI_Grupo2.Datos
                 comando.Parameters.Add("Nom", MySqlDbType.VarChar).Value = cliente.Nombre;
                 comando.Parameters.Add("Ape", MySqlDbType.VarChar).Value = cliente.Apellido;
                 comando.Parameters.Add("pDni", MySqlDbType.Int32).Value = cliente.Dni;
-                comando.Parameters.Add("Fec", MySqlDbType.Date).Value = cliente.Fecha_nac;
+                comando.Parameters.Add("Fec", MySqlDbType.Date).Value = cliente.FechaNac;
                 comando.Parameters.Add("Gen", MySqlDbType.VarChar).Value = cliente.Genero;
                 comando.Parameters.Add("Cel", MySqlDbType.VarChar).Value = cliente.NumCel;
                 comando.Parameters.Add("Dom", MySqlDbType.VarChar).Value = cliente.Domicilio;

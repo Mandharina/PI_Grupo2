@@ -46,7 +46,6 @@ namespace PI_Grupo2
             btnVolver = new Button();
             lblDomicilio = new Label();
             txtDomicilio = new TextBox();
-            btnLimpiarFormulario = new Button();
             label1 = new Label();
             btnRegistrarNoSocio = new Button();
             SuspendLayout();
@@ -187,7 +186,7 @@ namespace PI_Grupo2
             btnRegistrarSocio.TabIndex = 17;
             btnRegistrarSocio.Text = "REGISTRAR SOCIO";
             btnRegistrarSocio.UseVisualStyleBackColor = false;
-            btnRegistrarSocio.Click += btnIngresar_Click;
+            btnRegistrarSocio.Click += btnRegistrarSocio_Click;
             // 
             // btnVolver
             // 
@@ -220,19 +219,6 @@ namespace PI_Grupo2
             txtDomicilio.Size = new Size(572, 23);
             txtDomicilio.TabIndex = 20;
             // 
-            // btnLimpiarFormulario
-            // 
-            btnLimpiarFormulario.BackColor = Color.LightGray;
-            btnLimpiarFormulario.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLimpiarFormulario.Location = new Point(488, 285);
-            btnLimpiarFormulario.Margin = new Padding(3, 2, 3, 2);
-            btnLimpiarFormulario.Name = "btnLimpiarFormulario";
-            btnLimpiarFormulario.Size = new Size(196, 30);
-            btnLimpiarFormulario.TabIndex = 21;
-            btnLimpiarFormulario.Text = "Limpiar Formulario";
-            btnLimpiarFormulario.UseVisualStyleBackColor = false;
-            btnLimpiarFormulario.Click += btnLimpiarFormulario_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -253,6 +239,7 @@ namespace PI_Grupo2
             btnRegistrarNoSocio.TabIndex = 23;
             btnRegistrarNoSocio.Text = "REGISTRAR NO SOCIO";
             btnRegistrarNoSocio.UseVisualStyleBackColor = false;
+            btnRegistrarNoSocio.Click += btnRegistrarNoSocio_Click;
             // 
             // frmRegistrarCliente
             // 
@@ -262,7 +249,6 @@ namespace PI_Grupo2
             ClientSize = new Size(741, 489);
             Controls.Add(btnRegistrarNoSocio);
             Controls.Add(label1);
-            Controls.Add(btnLimpiarFormulario);
             Controls.Add(txtDomicilio);
             Controls.Add(lblDomicilio);
             Controls.Add(btnVolver);
@@ -309,7 +295,6 @@ namespace PI_Grupo2
         private Button btnVolver;
         private Label lblDomicilio;
         private TextBox txtDomicilio;
-        private Button btnLimpiarFormulario;
         private Label label1;
         private Button btnRegistrarNoSocio;
     }

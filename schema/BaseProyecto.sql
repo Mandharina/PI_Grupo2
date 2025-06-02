@@ -25,18 +25,6 @@ constraint fk_usuario foreign key(RolUsu) references roles(RolUsu)
 insert into usuario(CodUsu,NombreUsu,PassUsu,RolUsu) values
 (1,'Admin','Admin123',120);
 
-CREATE TABLE cliente (
-    NroCarnet INT PRIMARY KEY,
-    Nombre VARCHAR(30),
-    Apellido VARCHAR(40),
-    DNI INT,
-    FechaNacimiento DATE,
-    Genero VARCHAR(15),
-    NumCel VARCHAR(15),
-    Domicilio VARCHAR(100)
-    
-);
-
 
 create table socio(
 NroCarnet int auto_increment,
