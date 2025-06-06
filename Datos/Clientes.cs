@@ -55,11 +55,13 @@ namespace PI_Grupo2.Datos
             return salida;
         }
 
-    
-     // Método para registrar SOCIO
-        public string RegistrarSocio(E_Socio socio)
+
+        // Método para registrar SOCIO
+
+        public int RegistrarSocio(E_Socio socio)
         {
-            string? salida;
+            int nroCarnet = -1;
+
             MySqlConnection sqlCon = new MySqlConnection();
 
             try
@@ -87,11 +89,12 @@ namespace PI_Grupo2.Datos
 
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
-                salida = Convert.ToString(ParCodigo.Value);
+                nroCarnet = Convert.ToInt32(comando.Parameters["p_nroCarnet"].Value);
+
             }
             catch (Exception ex)
             {
-                salida = "Error: " + ex.Message;
+                throw new Exception("Error al registrar socio: " + ex.Message);
             }
             finally
             {
@@ -99,7 +102,59 @@ namespace PI_Grupo2.Datos
                     sqlCon.Close();
             }
 
-            return salida;
+            return nroCarnet;
+        }
+
+        public E_Socio? BuscarSocioPorDniONro(int valor)
+        {
+            E_Socio? socio = null;
+
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    string query = @"
+                SELECT 
+                    NroCarnet, Nombre, Apellido, Dni, FechaNac, Genero, NumCel, 
+                    Domicilio, AptoFisico, FechaIngreso, VencCuota, EsActivo, CarnetEntregado
+                FROM socio 
+                WHERE Dni = @valor OR NroCarnet = @valor";
+
+                    MySqlCommand cmd = new MySqlCommand(query, sqlCon);
+                    cmd.Parameters.AddWithValue("@valor", valor);
+
+                    sqlCon.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        socio = new E_Socio
+                        {
+                            NroCarnet = Convert.ToInt32(reader["NroCarnet"]),
+                            Nombre = reader["Nombre"].ToString(),
+                            Apellido = reader["Apellido"].ToString(),
+                            Dni = Convert.ToInt32(reader["Dni"]),
+                            FechaNac = Convert.ToDateTime(reader["FechaNac"]),
+                            Genero = reader["Genero"].ToString(),
+                            NumCel = reader["NumCel"].ToString(),
+                            Domicilio = reader["Domicilio"].ToString(),
+                            AptoFisico = Convert.ToBoolean(reader["AptoFisico"]),
+                            FechaIngreso = Convert.ToDateTime(reader["FechaIngreso"]),
+                            VencCuota = Convert.ToDateTime(reader["VencCuota"]),
+                            EsActivo = Convert.ToBoolean(reader["EsActivo"]),
+                            CarnetEntregado = Convert.ToBoolean(reader["CarnetEntregado"])
+                        };
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al buscar socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return socio;
         }
     }
 }

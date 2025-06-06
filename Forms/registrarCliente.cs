@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySqlX.XDevAPI;
 using PI_Grupo2.Datos;
 using PI_Grupo2.Entidades;
+using PI_Grupo2.Forms;
 
 namespace PI_Grupo2
 {
@@ -62,107 +63,60 @@ namespace PI_Grupo2
 
         }
 
-        /* private void btnIngresar_Click(object sender, EventArgs e)
-         {
-             if (!chkApto.Checked)
-             {
-                 MessageBox.Show(
-                 "No puede inscribirse si no presenta apto físico",
-                 "Error",
-                 MessageBoxButtons.OK,
-                 MessageBoxIcon.Error);
-                 return;
-             }
-
-
-
-             if (txtNombre.Text == "" || txtApellido.Text == "" ||
-             txtDni.Text == "" || txtTelefono.Text == "" || txtDomicilio.Text == "" || cboGenero.Text == "")
-             {
-                 MessageBox.Show("Debe completar todos los datos requeridos",
-                 "AVISO DEL SISTEMA", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-             }
-             else
-             {
-                 string respuesta;
-                 E_Cliente cliente = new E_Cliente();
-                 cliente.Nombre = txtNombre.Text;
-                 cliente.Apellido = txtApellido.Text;
-                 cliente.Dni = Convert.ToInt32(txtDni.Text);
-                 cliente.NumCel = txtTelefono.Text;
-                 cliente.Genero = cboGenero.Text;
-                 cliente.Fecha_nac = dtpFechaNac.Value;
-                 cliente.Domicilio = txtDomicilio.Text;
-
-                 // instanciamos para usar el método dentro de Clientes
-                 Datos.Clientes datos = new Datos.Clientes();
-                 respuesta = datos.Registrar_Cliente(cliente);
-
-                 bool esnumero = int.TryParse(respuesta, out int codigo);
-                 if (esnumero)
-                 {
-                     if (codigo == 1)
-                     {
-                         MessageBox.Show("CLIENTE YA EXISTE", "AVISO DEL SISTEMA",
-                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                     }
-                     else
-                     {
-                         cliente.NroCarnet = codigo;
-                         MessageBox.Show("Cliente creado con éxito.Su número de carnet es" + respuesta,
-                         "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                     }
-                 }
-                 else
-                 {
-                     MessageBox.Show("Error: " + respuesta, "AVISO DEL SISTEMA",
-                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 }
-             }
-         }
-        */
 
 
         private void btnRegistrarSocio_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
 
-            // FALTA DEFINIR PANTALLA DE PAGO, ENTIDAD CUOTA, METODOS Y PROCEDURE
-            /*   frmPagoSocio pago = new frmPagoSocio();
-               var resultado = pago.ShowDialog();
+            if (!int.TryParse(txtDni.Text, out int dni))
+            {
+                MessageBox.Show("El DNI debe ser un número válido.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                if (resultado == DialogResult.OK)
-                {
-                    E_Socio socio = new E_Socio
-                    {
-                        Nombre = txtNombre.Text,
-                        Apellido = txtApellido.Text,
-                        Dni = Convert.ToInt32(txtDni.Text),
-                        NumCel = txtTelefono.Text,
-                        Genero = cboGenero.Text,
-                        FechaNac = dtpFechaNac.Value,
-                        Domicilio = txtDomicilio.Text,
-                        AptoFisico = chkApto.Checked,
-                        FechaIngreso = DateTime.Today,
-                        VencCuota = DateTime.Today.AddMonths(1),
-                        EsActivo = true,
-                        CarnetEntregado = true
-                    };
+            if (Datos.VerificadorCliente.VerificarDni(dni))
+            {
+                MessageBox.Show("El cliente ya está registrado con ese DNI.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    Datos.Clientes datos = new Datos.Clientes();
-                    string respuesta = datos.RegistrarSocio(socio);
+            E_Socio socio = new E_Socio
+            {
+                Nombre = txtNombre.Text,
+                Apellido = txtApellido.Text,
+                Dni = dni,
+                NumCel = txtTelefono.Text,
+                Genero = cboGenero.Text,
+                FechaNac = dtpFechaNac.Value,
+                Domicilio = txtDomicilio.Text,
+                AptoFisico = chkApto.Checked,
+                FechaIngreso = DateTime.Today,
+                VencCuota = DateTime.Today.AddMonths(1)
+            };
 
-                    bool esNumero = int.TryParse(respuesta, out int codigo);
-                    if (esNumero)
-                    {
-                        MessageBox.Show($"Socio registrado con éxito. Su número de carnet es {codigo}", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error: " + respuesta, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }*/
+            // REGISTRAR SOCIO EN BD Y OBTENER NroCarnet
+            int carnetGenerado = new Datos.Clientes().RegistrarSocio(socio);
+            socio.NroCarnet = carnetGenerado;
+
+            // ABRIR PAGO
+            frmPagarCuota pago = new frmPagarCuota(socio);
+            var resultado = pago.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                // PAGO EXITOSO, VUEVLE AL INICIO
+                MessageBox.Show("Se emitió el carnet de socio.", "REGISTRO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                principal.Show();
+                this.Close();
+            }
+            else
+            {
+                // PAGO CANCELADO O RECHAZADO
+                MessageBox.Show("El registro fue cancelado o no se completó el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void btnRegistrarNoSocio_Click(object sender, EventArgs e)

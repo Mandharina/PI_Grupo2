@@ -133,7 +133,7 @@
             Controls.Add(lblMensajeBienvenida);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmLogin";
-            Text = "PÁGINA DE INICIO";
+            Text = "INICIAR SESIÓN";
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();

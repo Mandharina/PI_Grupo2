@@ -22,7 +22,7 @@ begin
         p_fechaIngreso, p_vencCuota, true, true
     );
 
-    set p_nroCarnet = LAST_INSERT_ID();
+    set p_nroCarnet = last_insert_id();
 end //
 
 delimiter ;

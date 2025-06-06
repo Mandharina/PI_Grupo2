@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using PI_Grupo2.Datos;
 
 namespace PI_Grupo2.Entidades
 {
     public class E_Socio : E_Cliente
     {
+        public int NroCarnet { get; set; }
         public DateTime FechaIngreso { get; set; }
         public DateTime VencCuota { get; set; }
         public bool EsActivo { get; set; } = true;
@@ -25,5 +29,6 @@ namespace PI_Grupo2.Entidades
             EsActivo = esActivo;
             CarnetEntregado = carnetEntregado;
         }
+
     }
 }

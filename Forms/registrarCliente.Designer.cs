@@ -54,7 +54,7 @@ namespace PI_Grupo2
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombre.Location = new Point(45, 103);
+            lblNombre.Location = new Point(45, 139);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(60, 17);
             lblNombre.TabIndex = 0;
@@ -64,7 +64,7 @@ namespace PI_Grupo2
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblApellido.Location = new Point(368, 103);
+            lblApellido.Location = new Point(368, 139);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(59, 17);
             lblApellido.TabIndex = 1;
@@ -74,7 +74,7 @@ namespace PI_Grupo2
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDni.Location = new Point(45, 148);
+            lblDni.Location = new Point(45, 184);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(33, 17);
             lblDni.TabIndex = 2;
@@ -84,7 +84,7 @@ namespace PI_Grupo2
             // 
             lblFechaNac.AutoSize = true;
             lblFechaNac.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFechaNac.Location = new Point(368, 149);
+            lblFechaNac.Location = new Point(368, 185);
             lblFechaNac.Name = "lblFechaNac";
             lblFechaNac.Size = new Size(133, 17);
             lblFechaNac.TabIndex = 3;
@@ -94,7 +94,7 @@ namespace PI_Grupo2
             // 
             lblGenero.AutoSize = true;
             lblGenero.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblGenero.Location = new Point(45, 245);
+            lblGenero.Location = new Point(45, 281);
             lblGenero.Name = "lblGenero";
             lblGenero.Size = new Size(51, 17);
             lblGenero.TabIndex = 4;
@@ -104,7 +104,7 @@ namespace PI_Grupo2
             // 
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTelefono.Location = new Point(368, 246);
+            lblTelefono.Location = new Point(368, 282);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(61, 17);
             lblTelefono.TabIndex = 5;
@@ -115,7 +115,7 @@ namespace PI_Grupo2
             chkApto.AutoSize = true;
             chkApto.CheckAlign = ContentAlignment.MiddleRight;
             chkApto.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            chkApto.Location = new Point(45, 292);
+            chkApto.Location = new Point(45, 92);
             chkApto.Margin = new Padding(3, 2, 3, 2);
             chkApto.Name = "chkApto";
             chkApto.Size = new Size(142, 21);
@@ -125,7 +125,7 @@ namespace PI_Grupo2
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(111, 100);
+            txtNombre.Location = new Point(111, 136);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(239, 23);
@@ -133,7 +133,7 @@ namespace PI_Grupo2
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(431, 100);
+            txtApellido.Location = new Point(431, 136);
             txtApellido.Margin = new Padding(3, 2, 3, 2);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(253, 23);
@@ -141,7 +141,7 @@ namespace PI_Grupo2
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(111, 145);
+            txtDni.Location = new Point(111, 181);
             txtDni.Margin = new Padding(3, 2, 3, 2);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(239, 23);
@@ -150,15 +150,15 @@ namespace PI_Grupo2
             // dtpFechaNac
             // 
             dtpFechaNac.Format = DateTimePickerFormat.Short;
-            dtpFechaNac.Location = new Point(506, 146);
+            dtpFechaNac.Location = new Point(506, 182);
             dtpFechaNac.Margin = new Padding(3, 2, 3, 2);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(174, 23);
+            dtpFechaNac.Size = new Size(178, 23);
             dtpFechaNac.TabIndex = 14;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(431, 243);
+            txtTelefono.Location = new Point(431, 279);
             txtTelefono.Margin = new Padding(3, 2, 3, 2);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(253, 23);
@@ -168,7 +168,7 @@ namespace PI_Grupo2
             // 
             cboGenero.FormattingEnabled = true;
             cboGenero.Items.AddRange(new object[] { "Femenino", "Masculino", "Otro" });
-            cboGenero.Location = new Point(111, 242);
+            cboGenero.Location = new Point(111, 278);
             cboGenero.Margin = new Padding(3, 2, 3, 2);
             cboGenero.Name = "cboGenero";
             cboGenero.Size = new Size(239, 23);
@@ -205,7 +205,7 @@ namespace PI_Grupo2
             // 
             lblDomicilio.AutoSize = true;
             lblDomicilio.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDomicilio.Location = new Point(45, 195);
+            lblDomicilio.Location = new Point(45, 231);
             lblDomicilio.Name = "lblDomicilio";
             lblDomicilio.Size = new Size(65, 17);
             lblDomicilio.TabIndex = 19;
@@ -213,7 +213,7 @@ namespace PI_Grupo2
             // 
             // txtDomicilio
             // 
-            txtDomicilio.Location = new Point(112, 192);
+            txtDomicilio.Location = new Point(112, 228);
             txtDomicilio.Margin = new Padding(3, 2, 3, 2);
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.Size = new Size(572, 23);
@@ -269,7 +269,7 @@ namespace PI_Grupo2
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmRegistrarCliente";
             RightToLeft = RightToLeft.No;
-            Text = "Registrar Cliente";
+            Text = "REGISTRO DE CLIENTE";
             ResumeLayout(false);
             PerformLayout();
         }
