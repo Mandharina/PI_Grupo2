@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using PI_Grupo2.Datos;
+
+namespace PI_Grupo2.Forms
+{
+    public partial class frmListarCuotas : Form
+    {
+        public frmListarCuotas()
+        {
+            InitializeComponent();
+        }
+
+        private void listarCuotasfrm_Load(object sender, EventArgs e)
+        {
+            CargarGrilla();//llamamos al procedimiento para dibujar la grilla de las cuotas
+        }
+
+        private void CargarGrilla()
+        {
+            
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query;
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "SELECT s.NroCarnet AS Socio,c.Importe,c.FechaVencimiento,IF(c.FechaPago IS NOT NULL, 'Paga', 'Pendiente') AS Estado FROM cuota c JOIN socio s ON c.NroSocio = s.NroCarnet WHERE c.FechaVencimiento >= CURDATE()  AND c.FechaVencimiento <= DATE_ADD(CURDATE(), INTERVAL 30 DAY) ORDER BY c.FechaVencimiento;";
+                //query a la base de datos para seleccionar los socios y sus cuotas correspondiente que venzan en los próximos 30 días
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.CommandType = CommandType.Text;
+                sqlCon.Open();
+
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int renglon = dtgvListarCuotas.Rows.Add();
+                        dtgvListarCuotas.Rows[renglon].Cells[0].Value = reader.GetInt32(0);  // NroCarnet
+                        dtgvListarCuotas.Rows[renglon].Cells[1].Value = reader.GetDouble(1); // Importe
+                        dtgvListarCuotas.Rows[renglon].Cells[2].Value = reader.GetDateTime(2).ToShortDateString(); // FechaVenc
+                        dtgvListarCuotas.Rows[renglon].Cells[3].Value = reader.GetString(3); // Estado
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("NO HAY DATOS PARA LA CARGA DE LA GRILLA");
+                }
+                }
+    catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+        }
+                
+
+            
+        }
+    }   
+

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PI_Grupo2.Forms;
 
 namespace PI_Grupo2
 {
@@ -35,5 +36,15 @@ namespace PI_Grupo2
             this.Hide();
         }
 
+        private void frmPaginaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnListarCuotas_Click(object sender, EventArgs e)
+        {
+            frmListarCuotas listarCuotas = new frmListarCuotas();
+            listarCuotas.Show();
+        }
     }
 }

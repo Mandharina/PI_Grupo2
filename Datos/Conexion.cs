@@ -23,7 +23,7 @@ namespace PI_Grupo2.Datos
                 servidor = "localhost";
                 puerto = "3306";
                 usuario = "root";
-                clave = ""; // Agregar contraseña si es que el servidor lo requiere
+                clave = "melusina29"; // Agregar contraseña si es que el servidor lo requiere
             }
         // Proceso de interacción
         public MySqlConnection CrearConexion()

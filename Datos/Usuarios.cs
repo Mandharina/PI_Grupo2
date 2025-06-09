@@ -23,7 +23,7 @@ namespace PI_Grupo2.Datos
                 // Definimos los parametros que tiene el procedure
                 comando.Parameters.Add("Usu", MySqlDbType.VarChar).Value = L_Usu;
                 comando.Parameters.Add("Pass", MySqlDbType.VarChar).Value = P_Usu;
-                // Abrimos la conexion
+                // Abrimos la conexion                                                            
                 sqlCon.Open();
                 resultado = comando.ExecuteReader(); // Almacenamos el resulatdo en la variable
                 tabla.Load(resultado); // Cargamos la tabla con el resultado
