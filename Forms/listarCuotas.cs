@@ -32,7 +32,7 @@ namespace PI_Grupo2.Forms
             {
                 string query;
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "SELECT s.NroCarnet AS Socio,c.Importe,c.FechaVencimiento,IF(c.FechaPago IS NOT NULL, 'Paga', 'Pendiente') AS Estado FROM cuota c JOIN socio s ON c.NroSocio = s.NroCarnet WHERE c.FechaVencimiento >= CURDATE()  AND c.FechaVencimiento <= DATE_ADD(CURDATE(), INTERVAL 30 DAY) ORDER BY c.FechaVencimiento;";
+                query = "SELECT s.NroCarnet AS Socio,c.Importe,c.FechaVencimiento,IF(c.FechaPago IS NOT NULL, 'Paga', 'Pendiente') AS Estado FROM cuota c JOIN socio s ON c.NroSocio = s.NroCarnet WHERE c.FechaVencimiento = CURDATE()  ORDER BY c.FechaVencimiento;";
                 //query a la base de datos para seleccionar los socios y sus cuotas correspondiente que venzan en los próximos 30 días
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.CommandType = CommandType.Text;
@@ -53,7 +53,7 @@ namespace PI_Grupo2.Forms
                 }
                 else
                 {
-                    MessageBox.Show("NO HAY DATOS PARA LA CARGA DE LA GRILLA");
+                    MessageBox.Show("NO HAY VENCIMIENTOS EN EL DÍA DE LA FECHA");
                 }
                 }
     catch (Exception ex)
