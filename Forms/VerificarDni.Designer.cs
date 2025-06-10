@@ -49,7 +49,7 @@
             // 
             txtDni.Location = new Point(199, 97);
             txtDni.Margin = new Padding(3, 2, 3, 2);
-            txtDni.MaxLength = 10;
+            txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(219, 23);
             txtDni.TabIndex = 2;

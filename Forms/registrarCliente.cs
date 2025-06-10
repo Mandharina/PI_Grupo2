@@ -16,10 +16,13 @@ namespace PI_Grupo2
 {
     public partial class frmRegistrarCliente : Form
     {
-        public frmRegistrarCliente()
+        private int nuevoDni;
+        public frmRegistrarCliente(int dni)
         {
             InitializeComponent();
             this.FormClosed += (s, e) => Application.Exit();
+            nuevoDni = dni;
+            txtDni.Text = nuevoDni.ToString();
         }
 
 
@@ -53,7 +56,7 @@ namespace PI_Grupo2
             txtDomicilio.Text = "";
             cboGenero.SelectedIndex = -1;
             chkApto.Checked = false;
-            dtpFechaNac.Value = DateTime.Today;
+            dtpFechaNac.Value = DateTime.Today.AddYears(-30);
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -98,22 +101,25 @@ namespace PI_Grupo2
             // REGISTRAR SOCIO EN BD Y OBTENER NroCarnet
             int carnetGenerado = new Datos.Clientes().RegistrarSocio(socio);
             socio.NroCarnet = carnetGenerado;
+            this.Hide();
 
-            // ABRIR PAGO
-            frmPagarCuota pago = new frmPagarCuota(socio);
-            var resultado = pago.ShowDialog();
+            // ABRIR MENU SOCIO PARA PAGO Y EMISION DE CARNET
+            frmRegistroSocio socioDTO = new frmRegistroSocio(socio);
+            var resultado = socioDTO.ShowDialog();
+
 
             if (resultado == DialogResult.OK)
             {
-                // PAGO EXITOSO, VUEVLE AL INICIO
-                MessageBox.Show("Se emitió el carnet de socio.", "REGISTRO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // REGISTRO OK, VUEVLE AL INICIO
+                MessageBox.Show("Se registró el socio correctamente.", "REGISTRO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmPaginaPrincipal principal = new frmPaginaPrincipal();
                 principal.Show();
-                this.Close();
             }
             else
             {
                 // PAGO CANCELADO O RECHAZADO
+                //ACA IRIA EL PROCESO DE ELIMINACION DE SOCIO
+                this.Show();
                 MessageBox.Show("El registro fue cancelado o no se completó el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 

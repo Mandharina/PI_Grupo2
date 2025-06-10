@@ -127,6 +127,7 @@ namespace PI_Grupo2
             // 
             txtNombre.Location = new Point(111, 136);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.MaxLength = 20;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(239, 23);
             txtNombre.TabIndex = 10;
@@ -135,6 +136,7 @@ namespace PI_Grupo2
             // 
             txtApellido.Location = new Point(431, 136);
             txtApellido.Margin = new Padding(3, 2, 3, 2);
+            txtApellido.MaxLength = 20;
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(253, 23);
             txtApellido.TabIndex = 11;
@@ -143,6 +145,7 @@ namespace PI_Grupo2
             // 
             txtDni.Location = new Point(111, 181);
             txtDni.Margin = new Padding(3, 2, 3, 2);
+            txtDni.MaxLength = 10;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(239, 23);
             txtDni.TabIndex = 12;
@@ -152,14 +155,18 @@ namespace PI_Grupo2
             dtpFechaNac.Format = DateTimePickerFormat.Short;
             dtpFechaNac.Location = new Point(506, 182);
             dtpFechaNac.Margin = new Padding(3, 2, 3, 2);
+            dtpFechaNac.MaxDate = new DateTime(2017, 1, 1, 0, 0, 0, 0);
+            dtpFechaNac.MinDate = new DateTime(1949, 12, 1, 0, 0, 0, 0);
             dtpFechaNac.Name = "dtpFechaNac";
             dtpFechaNac.Size = new Size(178, 23);
             dtpFechaNac.TabIndex = 14;
+            dtpFechaNac.Value = new DateTime(1950, 1, 1, 0, 0, 0, 0);
             // 
             // txtTelefono
             // 
             txtTelefono.Location = new Point(431, 279);
             txtTelefono.Margin = new Padding(3, 2, 3, 2);
+            txtTelefono.MaxLength = 12;
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(253, 23);
             txtTelefono.TabIndex = 15;
@@ -215,6 +222,7 @@ namespace PI_Grupo2
             // 
             txtDomicilio.Location = new Point(112, 228);
             txtDomicilio.Margin = new Padding(3, 2, 3, 2);
+            txtDomicilio.MaxLength = 50;
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.Size = new Size(572, 23);
             txtDomicilio.TabIndex = 20;
@@ -223,7 +231,7 @@ namespace PI_Grupo2
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(111, 19);
+            label1.Location = new Point(45, 27);
             label1.Name = "label1";
             label1.Size = new Size(479, 40);
             label1.TabIndex = 22;

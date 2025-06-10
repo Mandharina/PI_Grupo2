@@ -43,7 +43,7 @@ namespace PI_Grupo2
             {
                 MessageBox.Show("Puede continuar con el registro.", "Cliente inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                frmRegistrarCliente registar_cliente = new frmRegistrarCliente();
+                frmRegistrarCliente registar_cliente = new frmRegistrarCliente(dni);
                 registar_cliente.Show();
                 this.Hide();
             }

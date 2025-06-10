@@ -20,7 +20,7 @@ namespace PI_Grupo2.Forms
         {
             InitializeComponent();
             nuevoSocio = socio;
-            txtImporte.Text = "5000";
+            txtImporte.Text = "15000";
             rbtnEfectivo.CheckedChanged += MetodoPago_CheckedChanged;
             rbtnTarjeta.CheckedChanged += MetodoPago_CheckedChanged;
         }
@@ -98,9 +98,10 @@ namespace PI_Grupo2.Forms
             };
 
             Cuotas datosCuota = new Cuotas();
-            datosCuota.RegistrarCuota(cuota);
 
-            MessageBox.Show($"Pago exitoso. Nro de Carnet: {nuevoSocio.NroCarnet}", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            int nroComprobante = datosCuota.RegistrarCuota(cuota);
+
+            MessageBox.Show($"Pago exitoso. Comprobante de pago Nº: " + nroComprobante, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -110,5 +111,6 @@ namespace PI_Grupo2.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
     }
 }

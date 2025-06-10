@@ -48,7 +48,7 @@
             // 
             TituloPagarCuota.AutoSize = true;
             TituloPagarCuota.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TituloPagarCuota.Location = new Point(130, 26);
+            TituloPagarCuota.Location = new Point(49, 30);
             TituloPagarCuota.Name = "TituloPagarCuota";
             TituloPagarCuota.Size = new Size(268, 40);
             TituloPagarCuota.TabIndex = 0;
@@ -58,7 +58,7 @@
             // 
             lblImporte.AutoSize = true;
             lblImporte.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblImporte.Location = new Point(70, 106);
+            lblImporte.Location = new Point(49, 106);
             lblImporte.Name = "lblImporte";
             lblImporte.Size = new Size(54, 17);
             lblImporte.TabIndex = 4;
@@ -67,7 +67,7 @@
             // txtImporte
             // 
             txtImporte.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtImporte.Location = new Point(243, 103);
+            txtImporte.Location = new Point(222, 103);
             txtImporte.MaxLength = 20;
             txtImporte.Name = "txtImporte";
             txtImporte.Size = new Size(217, 25);
@@ -77,11 +77,11 @@
             // 
             btnPagarCuota.BackColor = Color.FromArgb(255, 192, 128);
             btnPagarCuota.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPagarCuota.Location = new Point(328, 308);
+            btnPagarCuota.Location = new Point(307, 308);
             btnPagarCuota.Name = "btnPagarCuota";
             btnPagarCuota.Size = new Size(132, 51);
             btnPagarCuota.TabIndex = 8;
-            btnPagarCuota.Text = "PAGAR CUOTA";
+            btnPagarCuota.Text = "PAGAR";
             btnPagarCuota.UseVisualStyleBackColor = false;
             btnPagarCuota.Click += btnPagarCuota_Click;
             // 
@@ -89,7 +89,7 @@
             // 
             btnCancelar.BackColor = Color.Salmon;
             btnCancelar.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(70, 308);
+            btnCancelar.Location = new Point(49, 308);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(132, 51);
             btnCancelar.TabIndex = 9;
@@ -101,7 +101,7 @@
             // 
             gbxFormaPago.Controls.Add(rbtnTarjeta);
             gbxFormaPago.Controls.Add(rbtnEfectivo);
-            gbxFormaPago.Location = new Point(70, 144);
+            gbxFormaPago.Location = new Point(49, 144);
             gbxFormaPago.Name = "gbxFormaPago";
             gbxFormaPago.Size = new Size(390, 57);
             gbxFormaPago.TabIndex = 11;
@@ -136,7 +136,7 @@
             gbxCuotas.Controls.Add(rbtn6);
             gbxCuotas.Controls.Add(rbtn3);
             gbxCuotas.Controls.Add(rbtn1);
-            gbxCuotas.Location = new Point(73, 220);
+            gbxCuotas.Location = new Point(52, 220);
             gbxCuotas.Name = "gbxCuotas";
             gbxCuotas.Size = new Size(387, 59);
             gbxCuotas.TabIndex = 12;
@@ -182,7 +182,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
-            ClientSize = new Size(535, 395);
+            ClientSize = new Size(498, 395);
             Controls.Add(gbxCuotas);
             Controls.Add(gbxFormaPago);
             Controls.Add(btnCancelar);

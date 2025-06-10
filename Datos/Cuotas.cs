@@ -11,7 +11,7 @@ namespace PI_Grupo2.Datos
 {
     public class Cuotas
     {
-        public void RegistrarCuota(E_Cuota cuota)
+        public int RegistrarCuota(E_Cuota cuota)
         {
             using var con = Conexion.getInstancia().CrearConexion();
             var cmd = new MySqlCommand("RegistrarCuota", con)
@@ -27,7 +27,13 @@ namespace PI_Grupo2.Datos
             cmd.Parameters.AddWithValue("p_CantCuotas", cuota.CantCuotas);
 
             con.Open();
-            cmd.ExecuteNonQuery();
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return Convert.ToInt32(reader["nroCuota"]);
+            }
+
+            return -1;
         }
     }
 }

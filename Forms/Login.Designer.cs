@@ -44,7 +44,7 @@
             lblMensajeBienvenida.BackColor = Color.Transparent;
             lblMensajeBienvenida.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblMensajeBienvenida.ForeColor = Color.Black;
-            lblMensajeBienvenida.Location = new Point(93, 38);
+            lblMensajeBienvenida.Location = new Point(112, 38);
             lblMensajeBienvenida.Name = "lblMensajeBienvenida";
             lblMensajeBienvenida.Size = new Size(233, 40);
             lblMensajeBienvenida.TabIndex = 0;
