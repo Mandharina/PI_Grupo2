@@ -28,23 +28,23 @@ namespace PI_Grupo2
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
-            //frmRegistrarCliente registar_cliente = new frmRegistrarCliente();
-            //registar_cliente.Show();
-            frmVerificarDni verificar_cliente = new frmVerificarDni();
-            verificar_cliente.Show();
-
+            frmVerificarDni verificar = new frmVerificarDni(true); // modo registro
+            verificar.Show();
             this.Hide();
         }
 
-        private void frmPaginaPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnListarCuotas_Click(object sender, EventArgs e)
         {
             frmListarCuotas listarCuotas = new frmListarCuotas();
             listarCuotas.Show();
+        }
+
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            frmVerificarDni verificar = new frmVerificarDni(false); // modo pagos
+            verificar.Show();
+            this.Hide();
         }
     }
 }

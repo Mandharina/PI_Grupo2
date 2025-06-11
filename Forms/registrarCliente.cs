@@ -78,7 +78,8 @@ namespace PI_Grupo2
                 return;
             }
 
-            if (Datos.VerificadorCliente.VerificarDni(dni))
+            var resultadoDNI = Datos.VerificadorCliente.VerificarDni(dni);
+            if (resultadoDNI.Existe)
             {
                 MessageBox.Show("El cliente ya está registrado con ese DNI.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -111,16 +112,24 @@ namespace PI_Grupo2
             if (resultado == DialogResult.OK)
             {
                 // REGISTRO OK, VUEVLE AL INICIO
-                MessageBox.Show("Se registró el socio correctamente.", "REGISTRO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmPaginaPrincipal principal = new frmPaginaPrincipal();
                 principal.Show();
             }
             else
             {
-                // PAGO CANCELADO O RECHAZADO
-                //ACA IRIA EL PROCESO DE ELIMINACION DE SOCIO
+                // PAGO CANCELADO O RECHAZADO - ELIMINAR SOCIO
+                bool eliminado = new Datos.Clientes().EliminarSocioPorDni(dni);
+
+                if (eliminado)
+                {
+                    MessageBox.Show("El registro fue cancelado o no se completó el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el socio. Verifique la base de datos.", "ERROR AL ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 this.Show();
-                MessageBox.Show("El registro fue cancelado o no se completó el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -137,7 +146,8 @@ namespace PI_Grupo2
             }
 
             // VALIDAR SI EL DNI YA EXISTE EN LA BASE DE DATOS
-            if (Datos.VerificadorCliente.VerificarDni(dni))
+            var resultado = Datos.VerificadorCliente.VerificarDni(dni);
+            if (resultado.Existe)
             {
                 MessageBox.Show("El cliente ya está registrado con ese DNI.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

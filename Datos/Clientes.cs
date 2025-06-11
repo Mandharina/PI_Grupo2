@@ -156,5 +156,28 @@ namespace PI_Grupo2.Datos
 
             return socio;
         }
+
+        public bool EliminarSocioPorDni(int dni)
+        {
+            using (MySqlConnection con = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    con.Open();
+                    string query = "DELETE FROM socio WHERE Dni = @dni";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@dni", dni);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+
     }
 }

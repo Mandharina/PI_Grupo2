@@ -44,10 +44,10 @@ constraint pk_carnet primary key (NroCarnet)
 );
 
 insert into socio(NroCarnet, Nombre, Apellido, Dni, FechaNac, Genero, NumCel, Domicilio, FechaIngreso, VencCuota) values
-(10001, 'Lucia', 'Pérez', '12345678', '1990-05-12', 'Femenino', '1123456789', 'Av. Siempre Viva 123', '2024-01-15', '2025-01-15'),
-(10002, 'Juan', 'Gómez', '87654321', '1985-09-23', 'Masculino', '1198765432', 'Calle Falsa 456', '2023-11-10', '2024-11-10'),
-(10003, 'Ana', 'Lopez', '23456789', '1992-03-08', 'Femenino', '1134567890', 'Pasaje 3 de Febrero', '2024-03-01', '2025-03-01'),
-(10004, 'Pedro', 'Ramirez', '34567890', '1978-12-30', 'Masculino', '1145678901', 'Barrio Centro', '2022-06-20', '2023-06-20'),
+(10001, 'Lucia', 'Pérez', 12345678, '1990-05-12', 'Femenino', '1123456789', 'Av. Siempre Viva 123', '2024-01-15', '2025-01-15'),
+(10002, 'Juan', 'Gómez', 27654321, '1985-09-23', 'Masculino', '1198765432', 'Calle Falsa 456', '2023-11-10', '2024-11-10'),
+(10003, 'Ana', 'Lopez', 23456789, '1992-03-08', 'Femenino', '1134567890', 'Pasaje 3 de Febrero', '2024-03-01', '2025-03-01'),
+(10004, 'Pedro', 'Ramirez', 34567891, '1978-12-30', 'Masculino', '1145678901', 'Barrio Centro', '2022-06-20', '2023-06-20'),
 (10005, 'Camila', 'Fernandez', '45678901', '2000-07-14', 'Femenino', '1156789012', 'Zona Norte', '2024-08-01', '2025-08-01');
 
 create table cuota(
@@ -101,11 +101,11 @@ constraint pk_noSocio primary key (NroNoSocio)
 );
 
 insert into noSocio (Nombre, Apellido, Dni, FechaNac, Genero, NumCel, Domicilio) values
-('Lucia', 'Pérez', '12345678', '1990-05-12', 'Femenino', '1123456789', 'Av. Siempre Viva 123'),
-('Juan', 'Gómez', '87654321', '1985-09-23', 'Masculino', '1198765432', 'Calle Falsa 456'),
-('Ana', 'Lopez', '23456789', '1992-03-08', 'Femenino', '1134567890', 'Pasaje 3 de Febrero 789'),
-('Pedro', 'Ramirez', '34567890', '1978-12-30', 'Masculino', '1145678901', 'Barrio Centro 12'),
-('Camila', 'Fernandez', '45678901', '2000-07-14', 'Femenino', '1156789012', 'Zona Norte 334');
+('Juana', 'Pérez', 12345679, '1990-05-12', 'Femenino', '1123456759', 'Av. Siempre Viva 123'),
+('Mario', 'Gómez', 17654321, '1985-09-23', 'Masculino', '1198765422', 'Calle Falsa 456'),
+('Analia', 'Lopez', 23456789, '1992-03-08', 'Femenino', '1134567840', 'Pasaje 3 de Febrero 789'),
+('Patricio', 'Ramirez', 24567890, '1978-12-30', 'Masculino', '1145676901', 'Barrio Centro 12'),
+('Jimena', 'Fernandez', 35678901, '2000-07-14', 'Femenino', '1156729012', 'Zona Norte 334');
 
 create table pagoActividad(
 NroPago int auto_increment,

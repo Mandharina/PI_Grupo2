@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
+using PI_Grupo2.Datos;
+using PI_Grupo2.Entidades;
+using PI_Grupo2.Forms;
 
 
 namespace PI_Grupo2
 {
     public partial class frmVerificarDni : Form
     {
-        public frmVerificarDni()
+
+        private readonly bool esParaRegistro;
+
+        public frmVerificarDni(bool esParaRegistro)
         {
             InitializeComponent();
+            this.esParaRegistro = esParaRegistro;
             this.FormClosed += (s, e) => Application.Exit();
 
         }
@@ -33,20 +40,68 @@ namespace PI_Grupo2
                 return;
             }
 
-            bool existe = Datos.VerificadorCliente.VerificarDni(dni);
+            var resultado = VerificadorCliente.VerificarDni(dni);
 
-            if (existe)
+            if (esParaRegistro)
             {
-                MessageBox.Show("El cliente ya está registrado.", "Cliente existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (resultado.Existe)
+                {
+                    MessageBox.Show("El cliente ya está registrado.", "AVISO DE SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    frmRegistrarCliente registrar = new frmRegistrarCliente(dni);
+                    registrar.Show();
+                    this.Hide();
+                }
             }
-            else
+            else // es para pagos
             {
-                MessageBox.Show("Puede continuar con el registro.", "Cliente inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!resultado.Existe)
+                {
+                    MessageBox.Show("El cliente no está registrado.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-                frmRegistrarCliente registar_cliente = new frmRegistrarCliente(dni);
-                registar_cliente.Show();
-                this.Hide();
+                if (resultado.NumeroIdentificador == null)
+                {
+                    MessageBox.Show("Error: no se pudo obtener el identificador del cliente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (resultado.EsSocio)
+                {
+                    E_Socio socioTemp = new E_Socio
+                    {
+                        NroCarnet = resultado.NumeroIdentificador.Value,
+                        VencCuota = DateTime.Today.AddMonths(1) 
+                    };
+
+                    frmPagarCuota pago = new frmPagarCuota(socioTemp);
+                    var resultadoPago = pago.ShowDialog();
+
+                    if (resultadoPago == DialogResult.OK)
+                    {
+                        frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                        principal.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El pago fue cancelado o no se completó.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                        principal.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El cliente está registrado pero no es socio.", "No Socio Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                }
+
             }
+
         }
 
 

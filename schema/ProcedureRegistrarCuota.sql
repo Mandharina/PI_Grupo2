@@ -14,7 +14,7 @@ begin
     ) values (
         p_NroSocio, p_FechaVencimiento, p_FechaPago, p_Importe, p_MetodoPago, p_CantCuotas
     );
-    select LAST_INSERT_ID() as nroCuota
+    select last_insert_id() as nroCuota;
 end //
 
 delimiter ;

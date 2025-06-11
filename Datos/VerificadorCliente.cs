@@ -1,43 +1,57 @@
 ﻿using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using PI_Grupo2.Entidades;
 
 namespace PI_Grupo2.Datos
 {
     public class VerificadorCliente
     {
-        public static bool VerificarDni(int dni)
+        public static VerificadorResultado VerificarDni(int dni)
         {
-            bool existe = false;
-            MySqlConnection con = Conexion.getInstancia().CrearConexion();
+            VerificadorResultado resultado = new VerificadorResultado();
 
-            try
+            using (MySqlConnection con = Conexion.getInstancia().CrearConexion())
             {
-                MySqlCommand cmd = new MySqlCommand("VerificarDni", con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("VerificarDni", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@p_dni", dni);
+                    cmd.Parameters.AddWithValue("@p_dni", dni);
 
-                MySqlParameter paramExiste = new MySqlParameter("@existe", MySqlDbType.Bit);
-                paramExiste.Direction = System.Data.ParameterDirection.Output;
-                cmd.Parameters.Add(paramExiste);
+                    var paramExiste = new MySqlParameter("@existe", MySqlDbType.Bit)
+                    {
+                        Direction = System.Data.ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(paramExiste);
 
-                con.Open();
-                cmd.ExecuteNonQuery();
+                    var paramEsSocio = new MySqlParameter("@es_socio", MySqlDbType.Bit)
+                    {
+                        Direction = System.Data.ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(paramEsSocio);
 
-                existe = Convert.ToBoolean(paramExiste.Value);
+                    var paramNumero = new MySqlParameter("@numero_identificador", MySqlDbType.Int32)
+                    {
+                        Direction = System.Data.ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(paramNumero);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    resultado.Existe = Convert.ToBoolean(paramExiste.Value);
+                    resultado.EsSocio = Convert.ToBoolean(paramEsSocio.Value);
+                    resultado.NumeroIdentificador = paramNumero.Value != DBNull.Value ? Convert.ToInt32(paramNumero.Value) : (int?)null;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar DNI: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al verificar DNI: " + ex.Message);
-            }
-            finally
-            {
-                if (con.State == System.Data.ConnectionState.Open)
-                    con.Close();
-            }
 
-            return existe;
+            return resultado;
         }
     }
 }

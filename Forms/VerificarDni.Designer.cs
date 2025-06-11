@@ -64,7 +64,7 @@
             btnVerificar.Name = "btnVerificar";
             btnVerificar.Size = new Size(253, 48);
             btnVerificar.TabIndex = 3;
-            btnVerificar.Text = "VERIFICAR DUPLICIDAD";
+            btnVerificar.Text = "VERIFICAR EXISTENCIA";
             btnVerificar.UseVisualStyleBackColor = false;
             btnVerificar.Click += btnVerificar_Click;
             // 

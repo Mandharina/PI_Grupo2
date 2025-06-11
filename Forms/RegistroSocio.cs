@@ -49,7 +49,7 @@ namespace PI_Grupo2.Forms
         {
             //ACA LOGICA PARA MOSTRAR CARNET A IMPRIMIR
   
-            MessageBox.Show("El carnet de socio se emitió correctamente", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("El socio se registró y su carnet se emitió correctamente", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
