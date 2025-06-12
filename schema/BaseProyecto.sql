@@ -48,7 +48,7 @@ insert into socio(NroCarnet, Nombre, Apellido, Dni, FechaNac, Genero, NumCel, Do
 (10002, 'Juan', 'Gómez', 27654321, '1985-09-23', 'Masculino', '1198765432', 'Calle Falsa 456', '2023-11-10', '2024-11-10'),
 (10003, 'Ana', 'Lopez', 23456789, '1992-03-08', 'Femenino', '1134567890', 'Pasaje 3 de Febrero', '2024-03-01', '2025-03-01'),
 (10004, 'Pedro', 'Ramirez', 34567891, '1978-12-30', 'Masculino', '1145678901', 'Barrio Centro', '2022-06-20', '2023-06-20'),
-(10005, 'Camila', 'Fernandez', '45678901', '2000-07-14', 'Femenino', '1156789012', 'Zona Norte', '2024-08-01', '2025-08-01');
+(10005, 'Camila', 'Fernandez', 45678902, '2000-07-14', 'Femenino', '1156789012', 'Zona Norte', '2024-08-01', '2025-08-01');
 
 create table cuota(
 NroCuota int auto_increment,

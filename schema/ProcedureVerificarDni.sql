@@ -1,40 +1,35 @@
 DELIMITER //
 create procedure VerificarDni(
-    in p_dni int,
-    out existe boolean,
-	out es_socio boolean,
-    out numero_identificador int
+    IN p_dni INT,
+    OUT existe BOOLEAN,
+    OUT es_socio BOOLEAN,
+    OUT numero_identificador INT
 )
-begin
-    declare nroCarnet int;
-    declare nroNoSocio int;
+BEGIN
+    -- Verificar si es socio
+    IF EXISTS (SELECT 1 FROM socio WHERE Dni = p_dni) THEN
+        SET existe = TRUE;
+        SET es_socio = TRUE;
+        SELECT NroCarnet INTO numero_identificador
+        FROM socio
+        WHERE Dni = p_dni
+        LIMIT 1;
 
-    select NroCarnet into nroCarnet
-    from socio
-    where Dni = p_dni
-    limit 1;
+    -- Si no es socio, verificar si es no socio
+    ELSEIF EXISTS (SELECT 1 FROM noSocio WHERE Dni = p_dni) THEN
+        SET existe = TRUE;
+        SET es_socio = FALSE;
+        SELECT NroNoSocio INTO numero_identificador
+        FROM noSocio
+        WHERE Dni = p_dni
+        LIMIT 1;
 
-    if nroCarnet is not null then
-        set existe = true;
-        set es_socio = true;
-        set numero_identificador = nroCarnet;
-    else
-        select NroNoSocio into nroNoSocio
-        from noSocio
-        where Dni = p_dni
-        limit 1;
-
-        if nroNoSocio is not null then
-            set existe = true;
-            set es_socio = false;
-            set numero_identificador = nroNoSocio;
-        else
-            set existe = false;
-            set es_socio = false;
-            set numero_identificador = null;
-        end if;
-    end if;
-end;
+    -- Si no se encuentra en ninguna
+    ELSE
+        SET existe = FALSE;
+        SET es_socio = FALSE;
+        SET numero_identificador = NULL;
+    END IF;
+END;
 //
 DELIMITER ;
-
