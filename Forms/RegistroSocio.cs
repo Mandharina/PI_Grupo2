@@ -14,6 +14,8 @@ namespace PI_Grupo2.Forms
     public partial class frmRegistroSocio : Form
     {
         private E_Socio nuevoSocio;
+
+
         public frmRegistroSocio(E_Socio socio)
         {
             InitializeComponent();
@@ -47,8 +49,9 @@ namespace PI_Grupo2.Forms
 
         private void btnEmitir_Click(object sender, EventArgs e)
         {
-            //ACA LOGICA PARA MOSTRAR CARNET A IMPRIMIR
-  
+            frmCarnet carnet = new frmCarnet(nuevoSocio);
+            carnet.ShowDialog();
+
             MessageBox.Show("El socio se registró y su carnet se emitió correctamente", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();
