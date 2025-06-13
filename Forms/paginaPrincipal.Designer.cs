@@ -90,13 +90,13 @@
             label1.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(295, 44);
             label1.Name = "label1";
-            label1.Size = new Size(287, 40);
+            label1.Size = new Size(364, 50);
             label1.TabIndex = 4;
             label1.Text = "Menu Principal";
             // 
             // frmPaginaPrincipal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
             ClientSize = new Size(900, 450);
@@ -108,6 +108,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Name = "frmPaginaPrincipal";
             Text = "Página Principal";
+            Load += frmPaginaPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
