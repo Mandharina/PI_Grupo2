@@ -26,6 +26,7 @@ namespace PI_Grupo2.Forms
             rbtnEfectivo.CheckedChanged += MetodoPago_CheckedChanged;
             rbtnTarjeta.CheckedChanged += MetodoPago_CheckedChanged;
             btnImprimirComprobante.Enabled = false; // Desactiva el botón al iniciar el form
+            btnImprimirComprobante.BackColor = Color.White; // Cambia el color del botón al iniciar
         }
 
         private void MetodoPago_CheckedChanged(object sender, EventArgs e)
@@ -113,6 +114,7 @@ namespace PI_Grupo2.Forms
             if (resultado == DialogResult.Yes)
             {
                 btnImprimirComprobante.Enabled = true;
+                btnImprimirComprobante.BackColor = Color.DarkOrange;
                 // El usuario debe presionar el botón manualmente
             }
             else
