@@ -15,6 +15,8 @@ namespace PI_Grupo2.Forms
     public partial class frmPagarCuota : Form
     {
         private E_Socio nuevoSocio;
+        private E_Cuota ultimaCuota;
+        private int ultimoComprobante;
 
         public frmPagarCuota(E_Socio socio)
         {
@@ -23,6 +25,7 @@ namespace PI_Grupo2.Forms
             txtImporte.Text = "15000";
             rbtnEfectivo.CheckedChanged += MetodoPago_CheckedChanged;
             rbtnTarjeta.CheckedChanged += MetodoPago_CheckedChanged;
+            btnImprimirComprobante.Enabled = false; // Desactiva el botón al iniciar el form
         }
 
         private void MetodoPago_CheckedChanged(object sender, EventArgs e)
@@ -100,10 +103,27 @@ namespace PI_Grupo2.Forms
             Cuotas datosCuota = new Cuotas();
 
             int nroComprobante = datosCuota.RegistrarCuota(cuota);
+            ultimaCuota = cuota;
+            ultimoComprobante = nroComprobante;
 
-            MessageBox.Show($"Pago exitoso. Comprobante de pago Nº: " + nroComprobante, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            var resultado = MessageBox.Show($"Pago exitoso. Comprobante de pago Nº: {nroComprobante}\n¿Desea imprimir el comprobante?","AVISO DEL SISTEMA",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                btnImprimirComprobante.Enabled = true;
+                // El usuario debe presionar el botón manualmente
+            }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+                frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                principal.Show();
+                this.Close();
+            }
+                      
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -111,6 +131,24 @@ namespace PI_Grupo2.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+        private void btnImprimirComprobante_Click(object sender, EventArgs e)
+        {
 
+            frmComprobante comprobante = new frmComprobante
+            {
+                NombreSocio = nuevoSocio.Nombre,
+                NumeroCarnet = nuevoSocio.NroCarnet,
+                FechaPago = ultimaCuota.FechaPago,
+                FechaVencimiento = ultimaCuota.FechaVencimiento,
+                Importe = ultimaCuota.Importe,
+                MetodoPago = ultimaCuota.MetodoPago,
+                CantCuotas = ultimaCuota.CantCuotas,
+                NumeroComprobante = ultimoComprobante
+            };
+
+            comprobante.ShowDialog();
+            this.DialogResult = DialogResult.OK;
+            //this.Close();
+        }
     }
 }

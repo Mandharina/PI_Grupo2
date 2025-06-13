@@ -28,9 +28,9 @@
             lblTitulo.BackColor = Color.Transparent;
             lblTitulo.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTitulo.ForeColor = Color.Black;
-            lblTitulo.Location = new Point(43, 30);
+            lblTitulo.Location = new Point(49, 40);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(338, 40);
+            lblTitulo.Size = new Size(427, 50);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Validación de DNI";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -39,19 +39,18 @@
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDni.Location = new Point(43, 99);
+            lblDni.Location = new Point(49, 132);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(150, 19);
+            lblDni.Size = new Size(188, 23);
             lblDni.TabIndex = 1;
             lblDni.Text = "Ingrese DNI del cliente:";
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(199, 97);
-            txtDni.Margin = new Padding(3, 2, 3, 2);
+            txtDni.Location = new Point(227, 129);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(219, 23);
+            txtDni.Size = new Size(250, 27);
             txtDni.TabIndex = 2;
             txtDni.KeyPress += txtDni_KeyPress;
             // 
@@ -59,10 +58,9 @@
             // 
             btnVerificar.BackColor = Color.FromArgb(255, 192, 128);
             btnVerificar.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnVerificar.Location = new Point(410, 158);
-            btnVerificar.Margin = new Padding(3, 2, 3, 2);
+            btnVerificar.Location = new Point(469, 211);
             btnVerificar.Name = "btnVerificar";
-            btnVerificar.Size = new Size(253, 48);
+            btnVerificar.Size = new Size(289, 64);
             btnVerificar.TabIndex = 3;
             btnVerificar.Text = "VERIFICAR EXISTENCIA";
             btnVerificar.UseVisualStyleBackColor = false;
@@ -73,10 +71,9 @@
             btnVolver.BackColor = Color.Salmon;
             btnVolver.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnVolver.ForeColor = SystemColors.ActiveCaptionText;
-            btnVolver.Location = new Point(43, 161);
-            btnVolver.Margin = new Padding(3, 2, 3, 2);
+            btnVolver.Location = new Point(49, 215);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(100, 45);
+            btnVolver.Size = new Size(114, 60);
             btnVolver.TabIndex = 4;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
@@ -84,18 +81,18 @@
             // 
             // frmVerificarDni
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
-            ClientSize = new Size(700, 246);
+            ClientSize = new Size(800, 328);
             Controls.Add(btnVolver);
             Controls.Add(btnVerificar);
             Controls.Add(txtDni);
             Controls.Add(lblDni);
             Controls.Add(lblTitulo);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmVerificarDni";
             Text = "Verificación de Cliente";
+            Load += frmVerificarDni_Load;
             ResumeLayout(false);
             PerformLayout();
         }

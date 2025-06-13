@@ -46,5 +46,10 @@ namespace PI_Grupo2
             verificar.Show();
             this.Hide();
         }
+
+        private void frmPaginaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

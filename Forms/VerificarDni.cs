@@ -74,7 +74,7 @@ namespace PI_Grupo2
                     E_Socio socioTemp = new E_Socio
                     {
                         NroCarnet = resultado.NumeroIdentificador.Value,
-                        VencCuota = DateTime.Today.AddMonths(1) 
+                        VencCuota = DateTime.Today.AddMonths(1)
                     };
 
                     frmPagarCuota pago = new frmPagarCuota(socioTemp);
@@ -88,6 +88,11 @@ namespace PI_Grupo2
                     }
                     else
                     {
+                        E_NoSocio noSocioTemp = new E_NoSocio
+                        {
+                            NroNoSocio = resultado.NumeroIdentificador.Value,
+                            
+                        };
                         MessageBox.Show("El pago fue cancelado o no se completó.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         frmPaginaPrincipal principal = new frmPaginaPrincipal();
                         principal.Show();
@@ -96,7 +101,14 @@ namespace PI_Grupo2
                 }
                 else
                 {
+                    E_NoSocio noSocioTemp = new E_NoSocio
+                    {
+                       NroNoSocio = resultado.NumeroIdentificador.Value,
+                         
+                    };
                     MessageBox.Show("El cliente está registrado pero no es socio.", "No Socio Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmPagarActividad pagarActividad = new frmPagarActividad(noSocioTemp);
+                    pagarActividad.Show();
                     this.Hide();
                 }
 
@@ -120,6 +132,11 @@ namespace PI_Grupo2
             frmPaginaPrincipal principal = new frmPaginaPrincipal();
             principal.Show();
             this.Hide();
+        }
+
+        private void frmVerificarDni_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
