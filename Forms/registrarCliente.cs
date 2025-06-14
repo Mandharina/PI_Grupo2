@@ -45,6 +45,18 @@ namespace PI_Grupo2
                 return false;
             }
 
+            if (!txtDni.Text.All(char.IsDigit) || txtDni.Text.Length < 8)
+            {
+                MessageBox.Show("El DNI debe contener solo números y al menos 8 dígitos.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!txtTelefono.Text.All(char.IsDigit) || txtTelefono.Text.Length < 8)
+            {
+                MessageBox.Show("El teléfono debe contener solo números y al menos 8 dígitos.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             return true;
         }
         private void LimpiarFormulario()
@@ -66,6 +78,42 @@ namespace PI_Grupo2
 
         }
 
+        //VALIDACIONES DE ENTRADA DE DATOS
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
 
         private void btnRegistrarSocio_Click(object sender, EventArgs e)

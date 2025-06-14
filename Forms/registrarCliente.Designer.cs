@@ -131,6 +131,7 @@ namespace PI_Grupo2
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(239, 23);
             txtNombre.TabIndex = 10;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // txtApellido
             // 
@@ -140,6 +141,7 @@ namespace PI_Grupo2
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(253, 23);
             txtApellido.TabIndex = 11;
+            txtApellido.KeyPress += txtApellido_KeyPress;
             // 
             // txtDni
             // 
@@ -149,6 +151,7 @@ namespace PI_Grupo2
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(239, 23);
             txtDni.TabIndex = 12;
+            txtDni.KeyPress += txtDni_KeyPress;
             // 
             // dtpFechaNac
             // 
@@ -170,6 +173,7 @@ namespace PI_Grupo2
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(253, 23);
             txtTelefono.TabIndex = 15;
+            txtTelefono.KeyPress += txtTelefono_KeyPress;
             // 
             // cboGenero
             // 

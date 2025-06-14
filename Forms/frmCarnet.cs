@@ -29,7 +29,7 @@ namespace PI_Grupo2.Forms
             lblNombre.Text = "Nombre: " + socio.Nombre;
             lblApellido.Text = "Apellido: " + socio.Apellido;
             lblNroCarnet.Text = "NRO: " + socio.NroCarnet;
-            lblFecha.Text = "Fecha emisión: " + DateTime.Today.ToShortDateString();
+            lblFecha.Text = "Fecha de alta: " + DateTime.Today.ToShortDateString();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
