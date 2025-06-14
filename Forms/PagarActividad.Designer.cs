@@ -34,6 +34,7 @@
             txtImporte = new TextBox();
             btnPagarActividad = new Button();
             btnCancelar = new Button();
+            btnImprimirComprobante = new Button();
             SuspendLayout();
             // 
             // lblSelecActivida
@@ -97,12 +98,26 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // btnImprimirComprobante
+            // 
+            btnImprimirComprobante.BackColor = Color.FromArgb(128, 255, 128);
+            btnImprimirComprobante.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnImprimirComprobante.Location = new Point(440, 369);
+            btnImprimirComprobante.Margin = new Padding(3, 4, 3, 4);
+            btnImprimirComprobante.Name = "btnImprimirComprobante";
+            btnImprimirComprobante.Size = new Size(151, 68);
+            btnImprimirComprobante.TabIndex = 14;
+            btnImprimirComprobante.Text = "IMPRIMIR COMPROBANTE";
+            btnImprimirComprobante.UseVisualStyleBackColor = false;
+            btnImprimirComprobante.Click += btnImprimirComprobante_Click;
+            // 
             // frmPagarActividad
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
             ClientSize = new Size(800, 450);
+            Controls.Add(btnImprimirComprobante);
             Controls.Add(btnCancelar);
             Controls.Add(btnPagarActividad);
             Controls.Add(txtImporte);
@@ -124,5 +139,6 @@
         private TextBox txtImporte;
         private Button btnPagarActividad;
         private Button btnCancelar;
+        private Button btnImprimirComprobante;
     }
 }

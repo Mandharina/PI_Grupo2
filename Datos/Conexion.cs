@@ -3,42 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 using MySql.Data.MySqlClient;
 
 namespace PI_Grupo2.Datos
 {
-   public class Conexion
+    public class Conexion
     {
-        // Declaramos las variables
         private string baseDatos;
         private string servidor;
         private string puerto;
         private string usuario;
         private string clave;
         private static Conexion? con = null;
-        private Conexion() // Asignamos valores a las variables de la conexion
+
+        private Conexion()
+        {
+            bool correcto = false;
+            int mensaje;
+
+            // Variables temporales para datos ingresados
+            string T_servidor = "";
+            string T_puerto = "";
+            string T_usuario = "";
+            string T_clave = "";
+
+            // Loop para reintentar si el usuario no confirma
+            while (!correcto)
             {
-                baseDatos = "Proyecto";
-                servidor = "localhost";
-                puerto = "3306";
-                usuario = "root";
-                clave = "melusina29"; // Agregar contraseña si es que el servidor lo requiere
+                T_servidor = Interaction.InputBox("Ingrese servidor", "DATOS DE INSTALACIÓN MySQL", "localhost");
+                T_puerto = Interaction.InputBox("Ingrese puerto", "DATOS DE INSTALACIÓN MySQL", "3306");
+                T_usuario = Interaction.InputBox("Ingrese usuario", "DATOS DE INSTALACIÓN MySQL", "root");
+                T_clave = Interaction.InputBox("Ingrese clave", "DATOS DE INSTALACIÓN MySQL", "");
+
+                mensaje = (int)MessageBox.Show(
+                    $"Su ingreso:\nSERVIDOR = {T_servidor}\nPUERTO = {T_puerto}\nUSUARIO = {T_usuario}\nCLAVE = {T_clave}",
+                    "CONFIRMAR DATOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                correcto = (mensaje == (int)DialogResult.Yes);
             }
-        // Proceso de interacción
+
+            // Asignar datos ingresados
+            this.baseDatos = "Proyecto"; 
+            this.servidor = T_servidor;
+            this.puerto = T_puerto;
+            this.usuario = T_usuario;
+            this.clave = T_clave;
+        }
+
         public MySqlConnection CrearConexion()
-            {
-            // Instanciamos una conexion
+        {
             MySqlConnection? cadena = new MySqlConnection();
-            // El bloque try permite controlar errores
             try
             {
-                cadena.ConnectionString = "datasource=" + servidor +
-                ";port=" + puerto +
-                ";username=" + usuario +
-                ";password=" + clave +
-                ";Database=" + baseDatos;
-
+                cadena.ConnectionString = "datasource=" + this.servidor +
+                                          ";port=" + this.puerto +
+                                          ";username=" + this.usuario +
+                                          ";password=" + this.clave +
+                                          ";Database=" + this.baseDatos;
             }
             catch (Exception ex)
             {
@@ -47,15 +70,14 @@ namespace PI_Grupo2.Datos
             }
             return cadena;
         }
-        // Para evaluar la instancia de la conectividad
+
         public static Conexion getInstancia()
         {
-            if (con == null) // Quiere decir que la conexion esta cerrada
+            if (con == null)
             {
-                con = new Conexion(); // Se crea una nueva
+                con = new Conexion();
             }
             return con;
         }
     }
-
 }
