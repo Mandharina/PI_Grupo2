@@ -52,7 +52,7 @@ namespace PI_Grupo2.Forms
             {
                 E_PagoActividad nuevoPago = new E_PagoActividad
                 {
-                    NoSocio = noSocio.NroNoSocio, 
+                    NoSocio = noSocio.NroNoSocio,
                     Actividad = actividadSeleccionada.NroActividad,
                     Monto = actividadSeleccionada.Costo,
                     FechaPago = DateTime.Today
@@ -79,6 +79,11 @@ namespace PI_Grupo2.Forms
             frmPaginaPrincipal principal = new frmPaginaPrincipal();
             principal.Show();
             this.Hide();
+        }
+
+        private void btnImprimirComprobante_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,7 +36,7 @@ namespace PI_Grupo2.Forms
 
         private void frmComprobante_Load(object sender, EventArgs e)
         {
-            // Setear texto dinámico en los labels (los controles vienen del designer)
+            
             lblSocio.Text = $"Socio: {NombreSocio}";
             lblCarnet.Text = $"Carnet N°: {NumeroCarnet}";
             lblPago.Text = $"Fecha de pago: {FechaPago.ToShortDateString()}";
