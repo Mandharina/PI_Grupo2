@@ -16,109 +16,216 @@
 
         private void InitializeComponent()
         {
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblSocio = new System.Windows.Forms.Label();
-            this.lblCarnet = new System.Windows.Forms.Label();
-            this.lblPago = new System.Windows.Forms.Label();
-            this.lblVencimiento = new System.Windows.Forms.Label();
-            this.lblImporte = new System.Windows.Forms.Label();
-            this.lblMetodo = new System.Windows.Forms.Label();
-            this.lblCuotas = new System.Windows.Forms.Label();
-            this.lblComprobante = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-
+            lblTitulo = new Label();
+            lblSocio = new Label();
+            lblCarnet = new Label();
+            lblPago = new Label();
+            lblVencimiento = new Label();
+            lblImporte = new Label();
+            lblMetodo = new Label();
+            lblCuotas = new Label();
+            lblComprobante = new Label();
+            btnImprimir = new Button();
+            pnlCabecera = new Panel();
+            label1 = new Label();
+            lblClub = new Label();
+            pbLogo = new PictureBox();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            pnlCabecera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
+            // 
             // lblTitulo
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.Location = new System.Drawing.Point(100, 20);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(200, 25);
-            this.lblTitulo.Text = "Comprobante de Pago";
-
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitulo.Location = new Point(132, 12);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(233, 30);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Comprobante de Pago";
+            // 
             // lblSocio
-            this.lblSocio.AutoSize = true;
-            this.lblSocio.Location = new System.Drawing.Point(30, 70);
-            this.lblSocio.Name = "lblSocio";
-            this.lblSocio.Size = new System.Drawing.Size(50, 15);
-            this.lblSocio.Text = "Socio:";
-
+            // 
+            lblSocio.AutoSize = true;
+            lblSocio.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSocio.Location = new Point(17, 12);
+            lblSocio.Name = "lblSocio";
+            lblSocio.Size = new Size(43, 17);
+            lblSocio.TabIndex = 1;
+            lblSocio.Text = "Socio:";
+            // 
             // lblCarnet
-            this.lblCarnet.AutoSize = true;
-            this.lblCarnet.Location = new System.Drawing.Point(30, 100);
-            this.lblCarnet.Name = "lblCarnet";
-            this.lblCarnet.Size = new System.Drawing.Size(60, 15);
-            this.lblCarnet.Text = "Carnet:";
-
+            // 
+            lblCarnet.AutoSize = true;
+            lblCarnet.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCarnet.Location = new Point(18, 38);
+            lblCarnet.Name = "lblCarnet";
+            lblCarnet.Size = new Size(76, 17);
+            lblCarnet.TabIndex = 2;
+            lblCarnet.Text = "Nro Carnet:";
+            // 
             // lblPago
-            this.lblPago.AutoSize = true;
-            this.lblPago.Location = new System.Drawing.Point(30, 130);
-            this.lblPago.Name = "lblPago";
-            this.lblPago.Size = new System.Drawing.Size(105, 15);
-            this.lblPago.Text = "Fecha de pago:";
-
+            // 
+            lblPago.AutoSize = true;
+            lblPago.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPago.Location = new Point(312, 13);
+            lblPago.Name = "lblPago";
+            lblPago.Size = new Size(98, 17);
+            lblPago.TabIndex = 3;
+            lblPago.Text = "Fecha de pago:";
+            // 
             // lblVencimiento
-            this.lblVencimiento.AutoSize = true;
-            this.lblVencimiento.Location = new System.Drawing.Point(30, 160);
-            this.lblVencimiento.Name = "lblVencimiento";
-            this.lblVencimiento.Size = new System.Drawing.Size(130, 15);
-            this.lblVencimiento.Text = "Fecha de vencimiento:";
-
+            // 
+            lblVencimiento.AutoSize = true;
+            lblVencimiento.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblVencimiento.Location = new Point(18, 68);
+            lblVencimiento.Name = "lblVencimiento";
+            lblVencimiento.Size = new Size(136, 17);
+            lblVencimiento.TabIndex = 4;
+            lblVencimiento.Text = "Fecha de vencimiento:";
+            // 
             // lblImporte
-            this.lblImporte.AutoSize = true;
-            this.lblImporte.Location = new System.Drawing.Point(30, 190);
-            this.lblImporte.Name = "lblImporte";
-            this.lblImporte.Size = new System.Drawing.Size(60, 15);
-            this.lblImporte.Text = "Importe:";
-
+            // 
+            lblImporte.AutoSize = true;
+            lblImporte.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblImporte.Location = new Point(313, 12);
+            lblImporte.Name = "lblImporte";
+            lblImporte.Size = new Size(57, 17);
+            lblImporte.TabIndex = 5;
+            lblImporte.Text = "Importe:";
+            // 
             // lblMetodo
-            this.lblMetodo.AutoSize = true;
-            this.lblMetodo.Location = new System.Drawing.Point(30, 220);
-            this.lblMetodo.Name = "lblMetodo";
-            this.lblMetodo.Size = new System.Drawing.Size(100, 15);
-            this.lblMetodo.Text = "Método de pago:";
-
+            // 
+            lblMetodo.AutoSize = true;
+            lblMetodo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMetodo.Location = new Point(313, 38);
+            lblMetodo.Name = "lblMetodo";
+            lblMetodo.Size = new Size(112, 17);
+            lblMetodo.TabIndex = 6;
+            lblMetodo.Text = "Método de pago:";
+            // 
             // lblCuotas
-            this.lblCuotas.AutoSize = true;
-            this.lblCuotas.Location = new System.Drawing.Point(30, 250);
-            this.lblCuotas.Name = "lblCuotas";
-            this.lblCuotas.Size = new System.Drawing.Size(110, 15);
-            this.lblCuotas.Text = "Cantidad de cuotas:";
-
+            // 
+            lblCuotas.AutoSize = true;
+            lblCuotas.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCuotas.Location = new Point(313, 68);
+            lblCuotas.Name = "lblCuotas";
+            lblCuotas.Size = new Size(124, 17);
+            lblCuotas.TabIndex = 7;
+            lblCuotas.Text = "Cantidad de cuotas:";
+            // 
             // lblComprobante
-            this.lblComprobante.AutoSize = true;
-            this.lblComprobante.Location = new System.Drawing.Point(30, 280);
-            this.lblComprobante.Name = "lblComprobante";
-            this.lblComprobante.Size = new System.Drawing.Size(120, 15);
-            this.lblComprobante.Text = "N° de comprobante:";
-
+            // 
+            lblComprobante.AutoSize = true;
+            lblComprobante.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblComprobante.Location = new Point(16, 13);
+            lblComprobante.Name = "lblComprobante";
+            lblComprobante.Size = new Size(128, 17);
+            lblComprobante.TabIndex = 8;
+            lblComprobante.Text = "N° de comprobante:";
+            // 
             // btnImprimir
-            this.btnImprimir.Location = new System.Drawing.Point(130, 320);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(120, 30);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-
+            // 
+            btnImprimir.BackColor = Color.FromArgb(255, 192, 128);
+            btnImprimir.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnImprimir.Location = new Point(198, 285);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new Size(167, 48);
+            btnImprimir.TabIndex = 9;
+            btnImprimir.Text = "IMPRIMIR";
+            btnImprimir.UseVisualStyleBackColor = false;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
+            // pnlCabecera
+            // 
+            pnlCabecera.BackColor = Color.WhiteSmoke;
+            pnlCabecera.Controls.Add(label1);
+            pnlCabecera.Controls.Add(lblClub);
+            pnlCabecera.Controls.Add(pbLogo);
+            pnlCabecera.Controls.Add(lblTitulo);
+            pnlCabecera.Location = new Point(20, 12);
+            pnlCabecera.Name = "pnlCabecera";
+            pnlCabecera.Size = new Size(530, 109);
+            pnlCabecera.TabIndex = 10;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(313, 53);
+            label1.Name = "label1";
+            label1.Size = new Size(158, 21);
+            label1.TabIndex = 3;
+            label1.Text = "CUIT 30-10005425-0";
+            // 
+            // lblClub
+            // 
+            lblClub.AutoSize = true;
+            lblClub.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblClub.Location = new Point(132, 53);
+            lblClub.Name = "lblClub";
+            lblClub.Size = new Size(138, 21);
+            lblClub.TabIndex = 2;
+            lblClub.Text = "Club Deportivo C#";
+            // 
+            // pbLogo
+            // 
+            pbLogo.Image = Properties.Resources.logo_club;
+            pbLogo.Location = new Point(22, 12);
+            pbLogo.Name = "pbLogo";
+            pbLogo.Size = new Size(90, 86);
+            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLogo.TabIndex = 1;
+            pbLogo.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(lblSocio);
+            panel1.Controls.Add(lblCarnet);
+            panel1.Controls.Add(lblCuotas);
+            panel1.Controls.Add(lblVencimiento);
+            panel1.Controls.Add(lblMetodo);
+            panel1.Controls.Add(lblImporte);
+            panel1.Location = new Point(20, 176);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(531, 101);
+            panel1.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.WhiteSmoke;
+            panel2.Controls.Add(lblComprobante);
+            panel2.Controls.Add(lblPago);
+            panel2.Location = new Point(21, 127);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(530, 43);
+            panel2.TabIndex = 12;
+            // 
             // frmComprobante
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 380);
-            this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.lblSocio);
-            this.Controls.Add(this.lblCarnet);
-            this.Controls.Add(this.lblPago);
-            this.Controls.Add(this.lblVencimiento);
-            this.Controls.Add(this.lblImporte);
-            this.Controls.Add(this.lblMetodo);
-            this.Controls.Add(this.lblCuotas);
-            this.Controls.Add(this.lblComprobante);
-            this.Controls.Add(this.btnImprimir);
-            this.Name = "frmComprobante";
-            this.Text = "Comprobante";
-            this.Load += new System.EventHandler(this.frmComprobante_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(571, 345);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            Controls.Add(pnlCabecera);
+            Controls.Add(btnImprimir);
+            Name = "frmComprobante";
+            Text = "COMPROBANTE DE PAGO";
+            Load += frmComprobante_Load;
+            pnlCabecera.ResumeLayout(false);
+            pnlCabecera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -133,5 +240,11 @@
         private Label lblCuotas;
         private Label lblComprobante;
         private Button btnImprimir;
+        private Panel pnlCabecera;
+        private Panel panel1;
+        private Panel panel2;
+        private PictureBox pbLogo;
+        private Label label1;
+        private Label lblClub;
     }
 }
