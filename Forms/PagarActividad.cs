@@ -20,6 +20,7 @@ namespace PI_Grupo2.Forms
         private readonly PagoActividad pagoDatos = new PagoActividad();
 
 
+
         public frmPagarActividad(E_NoSocio noSocio)
         {
             InitializeComponent();
@@ -90,7 +91,31 @@ namespace PI_Grupo2.Forms
                 else if (nroPago > 0)
                 {
                     bool reducido = actividadDatos.ReducirCupo(actividad.NroActividad);
-                    MessageBox.Show($"Pago realizado con éxito. N° de comprobante: {nroPago}", "PAGO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var resultado = MessageBox.Show(
+                   $"Pago exitoso. Comprobante de pago Nº: {nroPago}\n¿Desea imprimir el comprobante?",
+                   "AVISO DEL SISTEMA",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question
+               );
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        frmComprobanteActividad comprobante = new frmComprobanteActividad
+                        {
+                            NombreActividad = actividad.Nombre,
+                            NroCliente = noSocio.NroNoSocio,
+                            NombreCliente = noSocio.Nombre,
+                            ApellidoCliente = noSocio.Apellido,
+                            Importe = pago.Monto,
+                            FechaPago = pago.FechaPago,
+                            NumeroComprobante = nroPago,
+                        };
+
+                        comprobante.ShowDialog();
+                    }
+
+                    this.DialogResult = DialogResult.OK;
+
                     CargarActividades();
                 }
                 else

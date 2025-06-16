@@ -64,9 +64,9 @@
             lblCarnet.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblCarnet.Location = new Point(18, 38);
             lblCarnet.Name = "lblCarnet";
-            lblCarnet.Size = new Size(76, 17);
+            lblCarnet.Size = new Size(95, 17);
             lblCarnet.TabIndex = 2;
-            lblCarnet.Text = "Nro Carnet:";
+            lblCarnet.Text = "Nro de Carnet:";
             // 
             // lblPago
             // 
@@ -124,9 +124,9 @@
             lblComprobante.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblComprobante.Location = new Point(16, 13);
             lblComprobante.Name = "lblComprobante";
-            lblComprobante.Size = new Size(128, 17);
+            lblComprobante.Size = new Size(136, 17);
             lblComprobante.TabIndex = 8;
-            lblComprobante.Text = "N° de comprobante:";
+            lblComprobante.Text = "Nro de comprobante:";
             // 
             // btnImprimir
             // 

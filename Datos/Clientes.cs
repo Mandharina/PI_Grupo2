@@ -165,6 +165,37 @@ namespace PI_Grupo2.Datos
             return socio;
         }
 
+        public static E_NoSocio ObtenerNoSocioPorId(int id)
+        {
+            E_NoSocio noSocio = null;
+
+            using (MySqlConnection conexion = Conexion.getInstancia().CrearConexion())
+            {
+                conexion.Open();
+                string query = "SELECT * FROM noSocio WHERE nroNoSocio = @id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (MySqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            noSocio = new E_NoSocio
+                            {
+                                NroNoSocio = Convert.ToInt32(dr["nroNoSocio"]),
+                                Nombre = dr["nombre"].ToString(),
+                                Apellido = dr["apellido"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return noSocio;
+        }
+
+
         public bool EliminarSocioPorDni(int dni)
         {
             using (MySqlConnection con = Conexion.getInstancia().CrearConexion())

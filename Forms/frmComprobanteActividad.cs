@@ -4,47 +4,43 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Globalization;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace PI_Grupo2.Forms
 {
-    public partial class frmComprobante : Form
+    public partial class frmComprobanteActividad : Form
     {
+
         // Propiedades para recibir datos desde el formulario de pago
-        public string NombreSocio { get; set; }
-        public string ApellidoSocio { get; set; }
-        public int NumeroCarnet { get; set; }
+        public string NombreActividad { get; set; }
+        public int NroCliente { get; set; }
+        public string NombreCliente { get; set; }
+        public string ApellidoCliente { get; set; }
         public DateTime FechaPago { get; set; }
-        public DateTime FechaVencimiento { get; set; }
         public double Importe { get; set; }
-        public string MetodoPago { get; set; }
-        public int CantCuotas { get; set; }
         public int NumeroComprobante { get; set; }
 
-        public frmComprobante()
+        public frmComprobanteActividad()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
 
-            Load += frmComprobante_Load;
+            Load += frmComprobanteActividad_Load;
         }
 
-        private void frmComprobante_Load(object sender, EventArgs e)
+        private void frmComprobanteActividad_Load(object sender, EventArgs e)
         {
-            
-            lblSocio.Text = $"Socio: {NombreSocio}  {ApellidoSocio}";
-            lblCarnet.Text = $"Nro de Carnet: {NumeroCarnet}";
-            lblPago.Text = $"Fecha de pago: {FechaPago.ToShortDateString()}";
-            lblVencimiento.Text = $"Fecha de vencimiento: {FechaVencimiento.ToShortDateString()}";
+
+            lblActividad.Text = $"Actividad: {NombreActividad}";
+            lblNroCliente.Text = $"Nro de  Cliente: {NroCliente}";
+            lblCliente.Text = $"Cliente: {NombreCliente} {ApellidoCliente}";
             lblImporte.Text = $"Importe: ${Importe:N2}";
-            lblMetodo.Text = $"Método de pago: {MetodoPago}";
-            lblCuotas.Text = $"Cantidad de cuotas: {CantCuotas}";
+            lblPago.Text = $"Fecha de pago: {FechaPago.ToShortDateString()}";
             lblComprobante.Text = $"Nro de Comprobante: {NumeroComprobante}";
         }
 

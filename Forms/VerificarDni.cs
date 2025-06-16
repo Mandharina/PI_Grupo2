@@ -89,12 +89,9 @@ namespace PI_Grupo2
                 }
                 else
                 {
-                    E_NoSocio noSocioTemp = new E_NoSocio
-                    {
-                       NroNoSocio = resultado.NumeroIdentificador.Value,
-                         
-                    };
-                    MessageBox.Show("El cliente está registrado pero no es socio.", "No Socio Registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    E_NoSocio noSocioTemp = Datos.Clientes.ObtenerNoSocioPorId(resultado.NumeroIdentificador.Value);
+
+                    MessageBox.Show("El cliente está registrado y no es socio.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmPagarActividad pagarActividad = new frmPagarActividad(noSocioTemp);
                     pagarActividad.Show();
                     this.Hide();

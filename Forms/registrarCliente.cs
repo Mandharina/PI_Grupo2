@@ -199,9 +199,6 @@ namespace PI_Grupo2
             {
                 MessageBox.Show($"Cliente registrado como No Socio con éxito. Su número es {codigo}", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                // REGISTRO OK, VUEVLE AL INICIO
-                frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                principal.Show();
             }
             else
             {
