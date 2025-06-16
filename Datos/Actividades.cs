@@ -49,5 +49,25 @@ namespace PI_Grupo2.Datos
 
             return lista;
         }
+
+        public bool ReducirCupo(int nroActividad)
+        {
+            using (MySqlConnection conexion = Conexion.getInstancia().CrearConexion())
+            {
+                conexion.Open();
+
+                string query = @"UPDATE actividad 
+                         SET Cupos = Cupos - 1 
+                         WHERE NroActividad = @nroActividad AND Cupos > 0";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@nroActividad", nroActividad);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+        }
     }
 }

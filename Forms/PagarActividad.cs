@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 using PI_Grupo2.Datos;
 using PI_Grupo2.Entidades;
 
@@ -14,76 +15,99 @@ namespace PI_Grupo2.Forms
 {
     public partial class frmPagarActividad : Form
     {
-        private E_NoSocio noSocio;
+        private readonly E_NoSocio noSocio;
+        private readonly Actividades actividadDatos = new Actividades();
+        private readonly PagoActividad pagoDatos = new PagoActividad();
+
+
         public frmPagarActividad(E_NoSocio noSocio)
         {
             InitializeComponent();
             this.noSocio = noSocio;
+            CargarActividades();
         }
-        private void frmPagarActividad_Load(object sender, EventArgs e)
-        {
-            CargarActividades(); // Se llama al métoro para traer la actividad para el combobox
-        }
+
         private void CargarActividades()
         {
-            Actividades datos = new Actividades();
-            List<E_Actividad> lista = datos.ListarActividades();
+            dgvActividades.Rows.Clear();
+            List<E_Actividad> actividades = actividadDatos.ListarActividades();
 
-            cboActividades.DataSource = lista;
-            cboActividades.DisplayMember = "Nombre";
-            cboActividades.ValueMember = "NroActividad";
-        }
-
-        private void cboActividades_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboActividades.SelectedItem is E_Actividad actividadSeleccionada)
+            foreach (var act in actividades)
             {
-                txtImporte.Text = actividadSeleccionada.Costo.ToString("N2");
-            }
-            else
-            {
-                txtImporte.Text = "";
+                int index = dgvActividades.Rows.Add();
+                dgvActividades.Rows[index].Cells["Nombre"].Value = act.Nombre;
+                dgvActividades.Rows[index].Cells["Descripcion"].Value = act.Descripcion;
+                dgvActividades.Rows[index].Cells["Costo"].Value = act.Costo;
+                dgvActividades.Rows[index].Cells["Dia"].Value = act.Dia;
+                dgvActividades.Rows[index].Cells["Horario"].Value = act.Horario;
+                dgvActividades.Rows[index].Cells["Cupos"].Value = act.Cupos;
+                dgvActividades.Rows[index].Tag = act;
             }
         }
 
-        private void btnPagarActividad_Click(object sender, EventArgs e)
+        private void dgvActividades_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (cboActividades.SelectedItem is E_Actividad actividadSeleccionada)
+            if (e.RowIndex < 0 || dgvActividades.Columns[e.ColumnIndex].Name != "btnPagar")
+                return;
+
+            var actividad = dgvActividades.Rows[e.RowIndex].Tag as E_Actividad;
+
+            if (actividad == null)
             {
-                E_PagoActividad nuevoPago = new E_PagoActividad
+                MessageBox.Show("Error al recuperar la actividad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (actividad.Cupos <= 0)
+            {
+                MessageBox.Show("No hay cupos disponibles para esta actividad.", "Sin Cupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                $"¿Confirmar pago de la actividad '{actividad.Nombre}' por un monto de {actividad.Costo:C}?",
+                "Confirmar Pago",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                var pago = new E_PagoActividad
                 {
+                    Actividad = actividad.NroActividad,
                     NoSocio = noSocio.NroNoSocio,
-                    Actividad = actividadSeleccionada.NroActividad,
-                    Monto = actividadSeleccionada.Costo,
-                    FechaPago = DateTime.Today
+                    Monto = actividad.Costo,
+                    FechaPago = DateTime.Now
                 };
 
-                PagoActividad datosPago = new PagoActividad();
-                int nroPago = datosPago.RegistrarPago(nuevoPago);
+                int nroPago = pagoDatos.RegistrarPago(pago);
 
-                MessageBox.Show($"Pago exitoso. N° de comprobante: {nroPago}", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (nroPago > 0)
+                {
+                    actividadDatos.ReducirCupo(actividad.NroActividad);
+                    MessageBox.Show($"Pago realizado con éxito. N° de comprobante: {nroPago}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarActividades();
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar el pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
-                frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                principal.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Seleccione una actividad válida.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+        private void frmPagarActividad_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("El pago fue cancelado o no se completó.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            CargarActividades();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
             frmPaginaPrincipal principal = new frmPaginaPrincipal();
             principal.Show();
             this.Hide();
-        }
-
-        private void btnImprimirComprobante_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

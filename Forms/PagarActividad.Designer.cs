@@ -1,4 +1,7 @@
-﻿namespace PI_Grupo2.Forms
+﻿using System.Windows.Forms;
+using PI_Grupo2.Entidades;
+
+namespace PI_Grupo2.Forms
 {
     partial class frmPagarActividad
     {
@@ -28,117 +31,180 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblSelecActivida = new Label();
-            cboActividades = new ComboBox();
-            lblImporte = new Label();
-            txtImporte = new TextBox();
-            btnPagarActividad = new Button();
-            btnCancelar = new Button();
-            btnImprimirComprobante = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            dgvActividades = new DataGridView();
+            nombre = new DataGridViewTextBoxColumn();
+            descripcion = new DataGridViewTextBoxColumn();
+            costo = new DataGridViewTextBoxColumn();
+            dia = new DataGridViewTextBoxColumn();
+            horario = new DataGridViewTextBoxColumn();
+            cupos = new DataGridViewTextBoxColumn();
+            btnPagar = new DataGridViewButtonColumn();
+            lblActividades = new Label();
+            btnVolver = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvActividades).BeginInit();
             SuspendLayout();
             // 
-            // lblSelecActivida
+            // dgvActividades
             // 
-            lblSelecActivida.AutoSize = true;
-            lblSelecActivida.Location = new Point(142, 91);
-            lblSelecActivida.Name = "lblSelecActivida";
-            lblSelecActivida.Size = new Size(164, 20);
-            lblSelecActivida.TabIndex = 0;
-            lblSelecActivida.Text = "Seleccione la actividad:";
+            dgvActividades.AllowUserToAddRows = false;
+            dgvActividades.AllowUserToDeleteRows = false;
+            dgvActividades.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvActividades.BackgroundColor = Color.White;
+            dgvActividades.BorderStyle = BorderStyle.Fixed3D;
+            dgvActividades.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(192, 64, 0);
+            dataGridViewCellStyle3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvActividades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvActividades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvActividades.Columns.AddRange(new DataGridViewColumn[] { nombre, descripcion, costo, dia, horario, cupos, btnPagar });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 192, 128);
+            dataGridViewCellStyle4.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 128, 0);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvActividades.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvActividades.EnableHeadersVisualStyles = false;
+            dgvActividades.Font = new Font("Arial", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dgvActividades.GridColor = Color.FromArgb(255, 128, 0);
+            dgvActividades.Location = new Point(26, 104);
+            dgvActividades.Margin = new Padding(3, 2, 3, 2);
+            dgvActividades.MultiSelect = false;
+            dgvActividades.Name = "dgvActividades";
+            dgvActividades.ReadOnly = true;
+            dgvActividades.RowHeadersWidth = 51;
+            dgvActividades.RowTemplate.Height = 29;
+            dgvActividades.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvActividades.Size = new Size(1083, 244);
+            dgvActividades.TabIndex = 0;
+            dgvActividades.CellClick += dgvActividades_CellClick;
             // 
-            // cboActividades
+            // nombre
             // 
-            cboActividades.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboActividades.FormattingEnabled = true;
-            cboActividades.Location = new Point(312, 83);
-            cboActividades.Name = "cboActividades";
-            cboActividades.Size = new Size(237, 28);
-            cboActividades.TabIndex = 1;
-            cboActividades.SelectedIndexChanged += cboActividades_SelectedIndexChanged;
+            nombre.DividerWidth = 2;
+            nombre.HeaderText = "Nombre";
+            nombre.MinimumWidth = 6;
+            nombre.Name = "nombre";
+            nombre.ReadOnly = true;
+            nombre.Width = 250;
             // 
-            // lblImporte
+            // descripcion
             // 
-            lblImporte.AutoSize = true;
-            lblImporte.Location = new Point(232, 139);
-            lblImporte.Name = "lblImporte";
-            lblImporte.Size = new Size(62, 20);
-            lblImporte.TabIndex = 2;
-            lblImporte.Text = "Importe";
+            descripcion.DividerWidth = 2;
+            descripcion.HeaderText = "Descripción";
+            descripcion.MinimumWidth = 6;
+            descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            descripcion.Width = 400;
             // 
-            // txtImporte
+            // costo
             // 
-            txtImporte.Location = new Point(312, 132);
-            txtImporte.Name = "txtImporte";
-            txtImporte.Size = new Size(152, 27);
-            txtImporte.TabIndex = 3;
+            costo.DividerWidth = 2;
+            costo.HeaderText = "Costo";
+            costo.MinimumWidth = 6;
+            costo.Name = "costo";
+            costo.ReadOnly = true;
+            costo.Width = 80;
             // 
-            // btnPagarActividad
+            // dia
             // 
-            btnPagarActividad.BackColor = Color.FromArgb(255, 192, 128);
-            btnPagarActividad.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPagarActividad.Location = new Point(440, 268);
-            btnPagarActividad.Margin = new Padding(3, 4, 3, 4);
-            btnPagarActividad.Name = "btnPagarActividad";
-            btnPagarActividad.Size = new Size(151, 68);
-            btnPagarActividad.TabIndex = 9;
-            btnPagarActividad.Text = "PAGAR";
-            btnPagarActividad.UseVisualStyleBackColor = false;
-            btnPagarActividad.Click += btnPagarActividad_Click;
+            dia.DividerWidth = 2;
+            dia.HeaderText = "Día";
+            dia.MinimumWidth = 6;
+            dia.Name = "dia";
+            dia.ReadOnly = true;
+            dia.Width = 80;
             // 
-            // btnCancelar
+            // horario
             // 
-            btnCancelar.BackColor = Color.Salmon;
-            btnCancelar.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(85, 268);
-            btnCancelar.Margin = new Padding(3, 4, 3, 4);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(151, 68);
-            btnCancelar.TabIndex = 10;
-            btnCancelar.Text = "CANCELAR";
-            btnCancelar.UseVisualStyleBackColor = false;
-            btnCancelar.Click += btnCancelar_Click;
+            horario.DividerWidth = 2;
+            horario.HeaderText = "Horario";
+            horario.MinimumWidth = 6;
+            horario.Name = "horario";
+            horario.ReadOnly = true;
+            horario.Width = 80;
             // 
-            // btnImprimirComprobante
+            // cupos
             // 
-            btnImprimirComprobante.BackColor = Color.FromArgb(128, 255, 128);
-            btnImprimirComprobante.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnImprimirComprobante.Location = new Point(440, 369);
-            btnImprimirComprobante.Margin = new Padding(3, 4, 3, 4);
-            btnImprimirComprobante.Name = "btnImprimirComprobante";
-            btnImprimirComprobante.Size = new Size(151, 68);
-            btnImprimirComprobante.TabIndex = 14;
-            btnImprimirComprobante.Text = "IMPRIMIR COMPROBANTE";
-            btnImprimirComprobante.UseVisualStyleBackColor = false;
-            btnImprimirComprobante.Click += btnImprimirComprobante_Click;
+            cupos.DividerWidth = 2;
+            cupos.HeaderText = "Cupos";
+            cupos.MinimumWidth = 6;
+            cupos.Name = "cupos";
+            cupos.ReadOnly = true;
+            cupos.Width = 80;
+            // 
+            // btnPagar
+            // 
+            btnPagar.HeaderText = "Acción";
+            btnPagar.Name = "btnPagar";
+            btnPagar.ReadOnly = true;
+            btnPagar.Text = "Pagar";
+            btnPagar.UseColumnTextForButtonValue = true;
+            // 
+            // lblActividades
+            // 
+            lblActividades.AutoSize = true;
+            lblActividades.Font = new Font("Cooper Black", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblActividades.Location = new Point(26, 34);
+            lblActividades.Name = "lblActividades";
+            lblActividades.Size = new Size(444, 40);
+            lblActividades.TabIndex = 2;
+            lblActividades.Text = "Actividades Disponibles";
+            // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.Salmon;
+            btnVolver.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnVolver.Location = new Point(1009, 364);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(100, 45);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "VOLVER";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // frmPagarActividad
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnImprimirComprobante);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnPagarActividad);
-            Controls.Add(txtImporte);
-            Controls.Add(lblImporte);
-            Controls.Add(cboActividades);
-            Controls.Add(lblSelecActivida);
+            ClientSize = new Size(1136, 431);
+            Controls.Add(btnVolver);
+            Controls.Add(lblActividades);
+            Controls.Add(dgvActividades);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmPagarActividad";
-            Text = "Pagar Actividad";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Pago de Actividades";
             Load += frmPagarActividad_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvActividades).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+
         #endregion
 
-        private Label lblSelecActivida;
-        private ComboBox cboActividades;
-        private Label lblImporte;
-        private TextBox txtImporte;
-        private Button btnPagarActividad;
-        private Button btnCancelar;
-        private Button btnImprimirComprobante;
+        private System.Windows.Forms.DataGridView dgvActividades;
+        private System.Windows.Forms.Label lblActividades;
+        private DataGridViewTextBoxColumn nombre;
+        private DataGridViewTextBoxColumn descripcion;
+        private DataGridViewTextBoxColumn costo;
+        private DataGridViewTextBoxColumn dia;
+        private DataGridViewTextBoxColumn horario;
+        private DataGridViewTextBoxColumn cupos;
+        private DataGridViewButtonColumn btnPagar;
+        private Button btnVolver;
     }
 }
