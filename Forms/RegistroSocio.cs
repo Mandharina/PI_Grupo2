@@ -30,6 +30,7 @@ namespace PI_Grupo2.Forms
 
             if (resultado == DialogResult.OK)
             {
+                MessageBox.Show("Registro exitoso. Nro de Socio: "+nuevoSocio.NroCarnet+".", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 btnEmitir.Enabled = true;
                 btnEmitir.BackColor = Color.DarkOrange;
                 btnPagar.Enabled = false;
@@ -37,12 +38,15 @@ namespace PI_Grupo2.Forms
             }
             else
             {
-                MessageBox.Show("El registro fue cancelado o no se completó el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El registro fue cancelado por falta de pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("El registro fue cancelado.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

@@ -105,6 +105,19 @@ namespace PI_Grupo2.Datos
             return nroCarnet;
         }
 
+        public bool ActualizarVencimiento(int nroSocio, DateTime nuevoVencimiento)
+        {
+            using var con = Conexion.getInstancia().CrearConexion();
+            string query = "UPDATE socio SET VencCuota = @nuevoVenc WHERE NroCarnet = @nro";
+            var cmd = new MySqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@nuevoVenc", nuevoVencimiento);
+            cmd.Parameters.AddWithValue("@nro", nroSocio);
+
+            con.Open();
+            int filasAfectadas = cmd.ExecuteNonQuery();
+            return filasAfectadas > 0;
+        }
+
         public E_Socio? BuscarSocioPorDniONro(int valor)
         {
             E_Socio? socio = null;

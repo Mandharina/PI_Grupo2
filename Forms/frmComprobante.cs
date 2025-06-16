@@ -21,7 +21,7 @@ namespace PI_Grupo2.Forms
         public DateTime FechaVencimiento { get; set; }
         public double Importe { get; set; }
         public string MetodoPago { get; set; }
-        public string CantCuotas { get; set; }
+        public int CantCuotas { get; set; }
         public int NumeroComprobante { get; set; }
 
         public frmComprobante()

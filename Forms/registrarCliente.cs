@@ -144,7 +144,7 @@ namespace PI_Grupo2
                 Domicilio = txtDomicilio.Text,
                 AptoFisico = chkApto.Checked,
                 FechaIngreso = DateTime.Today,
-                VencCuota = DateTime.Today.AddMonths(1)
+                VencCuota = DateTime.Today
             };
 
             // REGISTRAR SOCIO EN BD Y OBTENER NroCarnet
@@ -165,18 +165,7 @@ namespace PI_Grupo2
             }
             else
             {
-                // PAGO CANCELADO O RECHAZADO - ELIMINAR SOCIO
-                bool eliminado = new Datos.Clientes().EliminarSocioPorDni(dni);
-
-                if (eliminado)
-                {
-                    MessageBox.Show("El registro fue cancelado o no se completó el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo eliminar el socio. Verifique la base de datos.", "ERROR AL ELIMINAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                new Datos.Clientes().EliminarSocioPorDni(dni);
                 this.Show();
             }
 
@@ -221,7 +210,10 @@ namespace PI_Grupo2
             if (esNumero)
             {
                 MessageBox.Show($"Cliente registrado como No Socio con éxito. Su número es {codigo}", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarFormulario();
+                this.Hide();
+                // REGISTRO OK, VUEVLE AL INICIO
+                frmPaginaPrincipal principal = new frmPaginaPrincipal();
+                principal.Show();
             }
             else
             {

@@ -71,29 +71,20 @@ namespace PI_Grupo2
 
                 if (resultado.EsSocio)
                 {
-                    E_Socio socioTemp = new E_Socio
-                    {
-                        NroCarnet = resultado.NumeroIdentificador.Value,
-                        VencCuota = DateTime.Today.AddMonths(1)
-                    };
+                    Clientes datosCliente = new Clientes();
+                    E_Socio? socioCompleto = datosCliente.BuscarSocioPorDniONro(resultado.NumeroIdentificador.Value);
 
-                    frmPagarCuota pago = new frmPagarCuota(socioTemp);
-                    var resultadoPago = pago.ShowDialog();
+                    if (socioCompleto == null)
+                    {
+                        MessageBox.Show("No se pudo cargar la información del socio.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    frmPagarCuota pago = new frmPagarCuota(socioCompleto);
+                    var resultadoPago = pago.ShowDialog(); 
 
                     if (resultadoPago == DialogResult.OK)
                     {
-                        frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                        principal.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        E_NoSocio noSocioTemp = new E_NoSocio
-                        {
-                            NroNoSocio = resultado.NumeroIdentificador.Value,
-                            
-                        };
-                        MessageBox.Show("El pago fue cancelado o no se completó.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         frmPaginaPrincipal principal = new frmPaginaPrincipal();
                         principal.Show();
                         this.Hide();

@@ -22,11 +22,22 @@ namespace PI_Grupo2.Forms
         {
             InitializeComponent();
             nuevoSocio = socio;
+
+            // Valores iniciales
+            lblNroSocio.Text = "Socio Nº: " + nuevoSocio.NroCarnet;
             txtImporte.Text = "15000";
+            txtImporteFinal.Text = "$15000.00";
+            lblVencimiento.Text = "Vence el: "+ nuevoSocio.VencCuota;
+
+            // Eventos
             rbtnEfectivo.CheckedChanged += MetodoPago_CheckedChanged;
             rbtnTarjeta.CheckedChanged += MetodoPago_CheckedChanged;
-            btnImprimirComprobante.Enabled = false; // Desactiva el botón al iniciar el form
-            btnImprimirComprobante.BackColor = Color.White; // Cambia el color del botón al iniciar
+
+            rbtn1.CheckedChanged += Cuotas_CheckedChanged;
+            rbtn3.CheckedChanged += Cuotas_CheckedChanged;
+            rbtn6.CheckedChanged += Cuotas_CheckedChanged;
+            rbtn9.CheckedChanged += Cuotas_CheckedChanged;
+            rbtn12.CheckedChanged += Cuotas_CheckedChanged;
         }
 
         private void MetodoPago_CheckedChanged(object sender, EventArgs e)
@@ -41,40 +52,80 @@ namespace PI_Grupo2.Forms
             }
         }
 
+        private void Cuotas_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarImporteFinal();
+        }
+
+        private void ActualizarImporteFinal()
+        {
+            if (!double.TryParse(txtImporte.Text.Replace("$", "").Trim(), out double importeBase))
+            {
+                txtImporteFinal.Text = "Error";
+                return;
+            }
+
+            double interes = 0;
+
+            if (rbtnTarjeta.Checked)
+            {
+                if (rbtn9.Checked || rbtn12.Checked)
+                {
+                    interes = 0.20;
+                }
+            }
+
+            double importeFinal = importeBase + (importeBase * interes);
+            txtImporteFinal.Text = $"${importeFinal:0.00}";
+        }
+
         private void btnPagarCuota_Click(object sender, EventArgs e)
         {
-            string metodoPago;
-            string cuotas = "1";
+            string metodoPago = "";
+            double importeBase;
+            double importeFinal;
+            int cuotas = 1;
+
+            // Verificar si el socio puede pagar (faltan 30 días o menos para el vencimiento)
+            TimeSpan diferencia = nuevoSocio.VencCuota - DateTime.Today;
+            if (diferencia.TotalDays > 30)
+            {
+                MessageBox.Show("La cuota aún no puede pagarse. Faltan más de 30 días para el vencimiento.",
+                                "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Validar importe
+            if (!double.TryParse(txtImporte.Text.Replace("$", "").Trim(), out importeBase))
+            {
+                MessageBox.Show("Ingrese un importe válido.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            importeFinal = importeBase;
 
             if (rbtnEfectivo.Checked)
             {
                 metodoPago = "Efectivo";
-                gbxCuotas.Visible = false;
-                cuotas = "1"; // Por defecto en efectivo es 1 cuota
+                cuotas = 1;
             }
             else if (rbtnTarjeta.Checked)
             {
                 metodoPago = "Tarjeta";
-                gbxCuotas.Visible = true;
+                double interes = 0;
 
-                // Determinar cantidad de cuotas
-                if (rbtn1.Checked)
-                {
-                    cuotas = "1";
-                }
-                else if (rbtn3.Checked)
-                {
-                    cuotas = "3";
-                }
-                else if (rbtn6.Checked)
-                {
-                    cuotas = "6";
-                }
+                if (rbtn1.Checked) cuotas = 1;
+                else if (rbtn3.Checked) cuotas = 3;
+                else if (rbtn6.Checked) cuotas = 6;
+                else if (rbtn9.Checked) { cuotas = 9; interes = 0.20; }
+                else if (rbtn12.Checked) { cuotas = 12; interes = 0.20; }
                 else
                 {
                     MessageBox.Show("Seleccione la cantidad de cuotas.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                importeFinal += importeBase * interes;
             }
             else
             {
@@ -82,75 +133,75 @@ namespace PI_Grupo2.Forms
                 return;
             }
 
+            // Mostrar el importe final calculado
+            txtImporteFinal.Text = $"${importeFinal:0.00}";
 
-            // Validar importe
-            if (!double.TryParse(txtImporte.Text.Replace("$", "").Trim(), out double importe))
-            {
-                MessageBox.Show("Ingrese un importe válido.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
+            // Crear cuota con vencimiento actual
             E_Cuota cuota = new E_Cuota
             {
                 NroSocio = nuevoSocio.NroCarnet,
                 FechaPago = DateTime.Now,
                 FechaVencimiento = nuevoSocio.VencCuota,
-                Importe = importe,
+                Importe = importeFinal,
                 MetodoPago = metodoPago,
                 CantCuotas = cuotas
             };
 
             Cuotas datosCuota = new Cuotas();
-
             int nroComprobante = datosCuota.RegistrarCuota(cuota);
-            ultimaCuota = cuota;
-            ultimoComprobante = nroComprobante;
 
-            var resultado = MessageBox.Show($"Pago exitoso. Comprobante de pago Nº: {nroComprobante}\n¿Desea imprimir el comprobante?","AVISO DEL SISTEMA",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question);
+            // Actualizar fecha de vencimiento del socio (sumar 1 mes)
+            Clientes cliente = new Clientes();
+            DateTime nuevoVenc = nuevoSocio.VencCuota.AddMonths(1);
+            bool actualizado = cliente.ActualizarVencimiento(nuevoSocio.NroCarnet, nuevoVenc);
 
-            if (resultado == DialogResult.Yes)
+            if (!actualizado)
             {
-                btnImprimirComprobante.Enabled = true;
-                btnImprimirComprobante.BackColor = Color.DarkOrange;
-                // El usuario debe presionar el botón manualmente
+                MessageBox.Show("No se pudo actualizar la fecha de vencimiento del socio.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                this.DialogResult = DialogResult.OK;
-                frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                principal.Show();
-                this.Close();
+                // ACTUALIZACIÓN LOCAL del objeto socio
+                nuevoSocio.VencCuota = nuevoVenc;
             }
-                      
 
+            ultimaCuota = cuota;
+            ultimoComprobante = nroComprobante;
+
+            var resultado = MessageBox.Show(
+                $"Pago exitoso. Comprobante de pago Nº: {nroComprobante}\n¿Desea imprimir el comprobante?",
+                "AVISO DEL SISTEMA",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                frmComprobante comprobante = new frmComprobante
+                {
+                    NombreSocio = nuevoSocio.Nombre,
+                    NumeroCarnet = nuevoSocio.NroCarnet,
+                    FechaPago = ultimaCuota.FechaPago,
+                    FechaVencimiento = ultimaCuota.FechaVencimiento,
+                    Importe = ultimaCuota.Importe,
+                    MetodoPago = ultimaCuota.MetodoPago,
+                    CantCuotas = ultimaCuota.CantCuotas,
+                    NumeroComprobante = ultimoComprobante
+                };
+
+                comprobante.ShowDialog();
+            }
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-        private void btnImprimirComprobante_Click(object sender, EventArgs e)
-        {
-
-            frmComprobante comprobante = new frmComprobante
-            {
-                NombreSocio = nuevoSocio.Nombre,
-                NumeroCarnet = nuevoSocio.NroCarnet,
-                FechaPago = ultimaCuota.FechaPago,
-                FechaVencimiento = ultimaCuota.FechaVencimiento,
-                Importe = ultimaCuota.Importe,
-                MetodoPago = ultimaCuota.MetodoPago,
-                CantCuotas = ultimaCuota.CantCuotas,
-                NumeroComprobante = ultimoComprobante
-            };
-
-            comprobante.ShowDialog();
-            this.DialogResult = DialogResult.OK;
-            //this.Close();
-        }
+       
     }
 }
