@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using PI_Grupo2.Entidades;
+﻿using PI_Grupo2.Entidades;
 
 namespace PI_Grupo2.Forms
 {
@@ -30,7 +21,7 @@ namespace PI_Grupo2.Forms
 
             if (resultado == DialogResult.OK)
             {
-                MessageBox.Show("Registro exitoso. Nro de Socio: "+nuevoSocio.NroCarnet+".", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Registro exitoso. Nro de Socio: " + nuevoSocio.NroCarnet + ".", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 btnEmitir.Enabled = true;
                 btnEmitir.BackColor = Color.DarkOrange;
                 btnPagar.Enabled = false;

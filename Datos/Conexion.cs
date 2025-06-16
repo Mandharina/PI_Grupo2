@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
+﻿using Microsoft.VisualBasic;
 
 using MySql.Data.MySqlClient;
 
@@ -45,7 +40,7 @@ namespace PI_Grupo2.Datos
             }
 
             // Asignar datos ingresados
-            this.baseDatos = "Proyecto"; 
+            this.baseDatos = "Proyecto";
             this.servidor = T_servidor;
             this.puerto = T_puerto;
             this.usuario = T_usuario;

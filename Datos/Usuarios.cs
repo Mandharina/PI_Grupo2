@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace PI_Grupo2.Datos
@@ -9,7 +8,7 @@ namespace PI_Grupo2.Datos
         // Creamos un metodo que retorne una tabla con la informacion
         public DataTable Log_Usu(string L_Usu, string P_Usu)
         {
-            
+
             MySqlDataReader resultado; // Variable de tipo datareader
             DataTable tabla = new DataTable();
             MySqlConnection sqlCon = new MySqlConnection();

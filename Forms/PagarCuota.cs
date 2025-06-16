@@ -180,6 +180,7 @@ namespace PI_Grupo2.Forms
                 frmComprobante comprobante = new frmComprobante
                 {
                     NombreSocio = nuevoSocio.Nombre,
+                    ApellidoSocio = nuevoSocio.Apellido,
                     NumeroCarnet = nuevoSocio.NroCarnet,
                     FechaPago = ultimaCuota.FechaPago,
                     FechaVencimiento = ultimaCuota.FechaVencimiento,

@@ -136,7 +136,7 @@
             Controls.Add(btnImprimir);
             Controls.Add(pnlCarnet);
             Name = "frmCarnet";
-            Text = "frmCarnet";
+            Text = "EMISIÓN DE CARNET";
             Load += frmCarnet_Load;
             pnlCarnet.ResumeLayout(false);
             pnlCarnet.PerformLayout();

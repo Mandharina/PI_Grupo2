@@ -65,7 +65,7 @@ namespace PI_Grupo2.Forms
             }
 
             DialogResult result = MessageBox.Show(
-                $"¿Confirmar pago de la actividad '{actividad.Nombre}' por un monto de {actividad.Costo:$}?",
+                $"¿Confirmar pago de la actividad '{actividad.Nombre}' por un monto de ${actividad.Costo:0.00}?",
                 "Confirmar Pago",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -85,7 +85,7 @@ namespace PI_Grupo2.Forms
 
                 if (nroPago == -1)
                 {
-                    MessageBox.Show("Ya realizaste un pago para esta actividad hoy.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Ya realizó un pago para esta actividad el día de hoy.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (nroPago > 0)
                 {
@@ -109,8 +109,6 @@ namespace PI_Grupo2.Forms
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            frmPaginaPrincipal principal = new frmPaginaPrincipal();
-            principal.Show();
             this.Hide();
         }
     }

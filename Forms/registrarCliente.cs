@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySqlX.XDevAPI;
-using PI_Grupo2.Datos;
-using PI_Grupo2.Entidades;
+﻿using PI_Grupo2.Entidades;
 using PI_Grupo2.Forms;
 
 namespace PI_Grupo2
@@ -160,8 +149,7 @@ namespace PI_Grupo2
             if (resultado == DialogResult.OK)
             {
                 // REGISTRO OK, VUEVLE AL INICIO
-                frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                principal.Show();
+                this.Hide();
             }
             else
             {
@@ -224,5 +212,4 @@ namespace PI_Grupo2
 }
 
 
-    
-    
+

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PI_Grupo2.Entidades
+﻿namespace PI_Grupo2.Entidades
 {
     public class E_NoSocio : E_Cliente
     {
-        public int NroNoSocio { get; set; } 
+        public int NroNoSocio { get; set; }
 
         public E_NoSocio() { }
 

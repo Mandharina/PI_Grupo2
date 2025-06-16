@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using MySql.Data.MySqlClient;
 using PI_Grupo2.Datos;
 
@@ -26,7 +18,7 @@ namespace PI_Grupo2.Forms
 
         private void CargarGrilla()
         {
-            
+
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
@@ -55,8 +47,8 @@ namespace PI_Grupo2.Forms
                 {
                     MessageBox.Show("NO HAY VENCIMIENTOS EN EL DÍA DE LA FECHA");
                 }
-                }
-    catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -65,9 +57,9 @@ namespace PI_Grupo2.Forms
                 if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
             }
         }
-                
 
-            
-        }
-    }   
+
+
+    }
+}
 

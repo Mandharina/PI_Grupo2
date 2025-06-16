@@ -1,4 +1,3 @@
-using System;
 using System.Data;
 using PI_Grupo2.Datos;
 
@@ -71,7 +70,7 @@ namespace PI_Grupo2
 
                 if (tablaLogin.Rows.Count > 0)
                 {
-                    MessageBox.Show("Ingreso exitoso","Club Deportivo C#", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Ingreso exitoso", "Club Deportivo C#", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmPaginaPrincipal principal = new frmPaginaPrincipal();
                     principal.Show();
                     this.Hide();

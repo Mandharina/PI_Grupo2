@@ -30,7 +30,6 @@ namespace PI_Grupo2
         {
             frmVerificarDni verificar = new frmVerificarDni(true); // modo registro
             verificar.Show();
-            this.Hide();
         }
 
 
@@ -44,7 +43,6 @@ namespace PI_Grupo2
         {
             frmVerificarDni verificar = new frmVerificarDni(false); // modo pagos
             verificar.Show();
-            this.Hide();
         }
 
         private void frmPaginaPrincipal_Load(object sender, EventArgs e)

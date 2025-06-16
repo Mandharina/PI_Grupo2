@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using PI_Grupo2.Datos;
-
-namespace PI_Grupo2.Entidades
+﻿namespace PI_Grupo2.Entidades
 {
     public class E_Socio : E_Cliente
     {

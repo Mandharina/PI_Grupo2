@@ -16,7 +16,6 @@ namespace PI_Grupo2
         {
             InitializeComponent();
             this.esParaRegistro = esParaRegistro;
-            this.FormClosed += (s, e) => Application.Exit();
 
         }
 
@@ -85,8 +84,6 @@ namespace PI_Grupo2
 
                     if (resultadoPago == DialogResult.OK)
                     {
-                        frmPaginaPrincipal principal = new frmPaginaPrincipal();
-                        principal.Show();
                         this.Hide();
                     }
                 }
@@ -120,8 +117,6 @@ namespace PI_Grupo2
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            frmPaginaPrincipal principal = new frmPaginaPrincipal();
-            principal.Show();
             this.Hide();
         }
 
