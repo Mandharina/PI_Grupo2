@@ -60,12 +60,12 @@ namespace PI_Grupo2.Forms
 
             if (actividad.Cupos <= 0)
             {
-                MessageBox.Show("No hay cupos disponibles para esta actividad.", "Sin Cupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No hay cupos disponibles para esta actividad.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             DialogResult result = MessageBox.Show(
-                $"¿Confirmar pago de la actividad '{actividad.Nombre}' por un monto de {actividad.Costo:C}?",
+                $"¿Confirmar pago de la actividad '{actividad.Nombre}' por un monto de {actividad.Costo:$}?",
                 "Confirmar Pago",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -83,15 +83,19 @@ namespace PI_Grupo2.Forms
 
                 int nroPago = pagoDatos.RegistrarPago(pago);
 
-                if (nroPago > 0)
+                if (nroPago == -1)
                 {
-                    actividadDatos.ReducirCupo(actividad.NroActividad);
-                    MessageBox.Show($"Pago realizado con éxito. N° de comprobante: {nroPago}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Ya realizaste un pago para esta actividad hoy.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (nroPago > 0)
+                {
+                    bool reducido = actividadDatos.ReducirCupo(actividad.NroActividad);
+                    MessageBox.Show($"Pago realizado con éxito. N° de comprobante: {nroPago}", "PAGO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarActividades();
                 }
                 else
                 {
-                    MessageBox.Show("Error al registrar el pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al registrar el pago.", "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
