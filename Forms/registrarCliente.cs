@@ -48,17 +48,7 @@ namespace PI_Grupo2
 
             return true;
         }
-        private void LimpiarFormulario()
-        {
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtDni.Text = "";
-            txtTelefono.Text = "";
-            txtDomicilio.Text = "";
-            cboGenero.SelectedIndex = -1;
-            chkApto.Checked = false;
-            dtpFechaNac.Value = DateTime.Today.AddYears(-30);
-        }
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
             frmPaginaPrincipal principal = new frmPaginaPrincipal();
